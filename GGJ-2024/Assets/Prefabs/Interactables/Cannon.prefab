@@ -316,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: {fileID: 5070435115879317527, guid: 7ad0bfa1a88249947945aefdbfad7539, type: 3}
   barrel: {fileID: 5621616818496903947}
+  ammoLifespan: 5
   force: 1500
   cooldown: 0
 --- !u!1 &4583085944634102305
