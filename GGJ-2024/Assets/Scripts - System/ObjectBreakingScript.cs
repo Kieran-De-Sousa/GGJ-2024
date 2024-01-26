@@ -10,7 +10,10 @@ public class ObjectBreakingScript : MonoBehaviour
     private Rigidbody _rigidbody;
     private float _velocity;
 
-    public float destroyVelocity = 30;
+    public float health = 100;
+
+    public float maxVelocityToDamage = 100;
+    public float maxDamagetaken = 150;
 
     private void Awake()
     {
@@ -26,14 +29,25 @@ public class ObjectBreakingScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        DestroyOnVelocity();
+        Damage();
     }
 
-    private void DestroyOnVelocity()
+    private void Damage()
     {
-        if (_velocity >= destroyVelocity)
+        if (_velocity >= 10)
         {
-            Destroy(transform.gameObject);
+            float damage = (_velocity / maxVelocityToDamage) * maxDamagetaken;
+            if ( damage > maxDamagetaken)
+            {
+                damage = maxDamagetaken;
+            }
+
+            health -= damage;
+            
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
