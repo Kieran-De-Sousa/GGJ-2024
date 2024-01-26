@@ -346,6 +346,11 @@ PrefabInstance:
       propertyPath: force
       value: 1500
       objectReference: {fileID: 0}
+    - target: {fileID: 8977554451210244529, guid: b43d1a19cb3b5a645a4b4ec67ded1b3c,
+        type: 3}
+      propertyPath: ammoLifespan
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

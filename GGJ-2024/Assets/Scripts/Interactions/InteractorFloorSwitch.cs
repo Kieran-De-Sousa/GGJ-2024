@@ -28,7 +28,10 @@ public class InteractorFloorSwitch : InteractorBase
      private void OnTriggerEnter(Collider other)
      {
          // TODO: Cooldown
-         Debug.Log("Collision Detected");
-         Interact();
+         if (other.tag == "Player")
+         {
+             Debug.Log("Collision Detected");
+             Interact();
+         }
      }
 }
