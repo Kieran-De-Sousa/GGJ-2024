@@ -20,12 +20,15 @@ public class InteractorFloorSwitch : InteractorBase
         
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        // TODO: Cooldown
-        if (other.collider == triggerBox)
-        {
-            Interact();
-        }
+     void OnCollisionEnter(Collision other)
+     {
+
     }
+
+     private void OnTriggerEnter(Collider other)
+     {
+         // TODO: Cooldown
+         Debug.Log("Collision Detected");
+         Interact();
+     }
 }

@@ -25,6 +25,8 @@ public class InteractableCannon : Interactable
 
     public override void Interact()
     {
+        Debug.Log("Cannon Fired");
+
         // TODO: Add cooldown timer
         GameObject cannonBall = Instantiate(ammo, barrel.position, barrel.rotation);
         cannonBall.GetComponent<Rigidbody>().velocity = barrel.forward * force * Time.deltaTime;
