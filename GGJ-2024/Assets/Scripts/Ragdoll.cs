@@ -41,6 +41,7 @@ public class Ragdoll : MonoBehaviour
         isRagdolling = bIsRagdoll;
         GetComponent<Animator>().enabled = !bIsRagdoll;
         myRigidbody.useGravity = !bIsRagdoll;
+        rootObject.GetComponent<Rigidbody>().constraints = bIsRagdoll ? RigidbodyConstraints.None : RigidbodyConstraints.FreezePositionY;
         myCollider.enabled = !bIsRagdoll;
 
         foreach (Collider ragdollCollider in childColliders)
