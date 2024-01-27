@@ -61,6 +61,19 @@ public class InteractableAxe : Interactable
         }
     }
 
+    /*
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("esfhiueshuiyefihusef");
+            var actionHit = GetComponent<ComedicActionHit>();
+            actionHit.Initiator = other.gameObject.GetComponent<TestPlayerScript>();
+            actionHit.ComedyTriggered(other.gameObject.GetComponent<Collider>());
+        }
+    }
+    */
+
     public override void Interact()
     {
         throw new System.NotImplementedException();

@@ -29,11 +29,24 @@ public class ComedicActionHit : ComedicActionBase
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Comedy Event Raised!");
+            ComedyTriggered(other.gameObject.GetComponent<Collider>());
+        }
+    }
+
     public override void ComedyTriggered(Collider collider)
     {
         if (!comedyTriggered)
         {
             comedyTriggered = true;
+            if (Initiator == null && collider.CompareTag("Player"))
+            {
+                Initiator = collider.GetComponent<TestPlayerScript>();
+            }
             comedyEvent.Raise(Initiator, comedyAmount);
             ragdollEvent.Raise(this, collider);
 
