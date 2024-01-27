@@ -52,10 +52,6 @@ public class TestPlayerScript : MonoBehaviour
     public void Slap(InputAction.CallbackContext info)
     {
         GetComponent<Animator>().SetTrigger("Slap");
-
-        AudioPlaySettings playSettings = AudioPlaySettings.Default;
-        playSettings.Position = transform.position;
-        AudioManager.Instance.PlayEffect(AudioID.Slap, AudioMixerID.SFX, playSettings);
     }
 
     public void Update()

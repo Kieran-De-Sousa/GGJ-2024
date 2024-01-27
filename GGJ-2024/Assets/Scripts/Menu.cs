@@ -24,7 +24,10 @@ public class Menu : MonoBehaviour
 
     private void StartMusic()
     {
-        MusicManager.Instance.PlayMusicGroup(AudioGroupID.MainMenuTracks, MusicPlaySettings.Default);
+        MusicPlaySettings musicPlaySettings = MusicPlaySettings.Default;
+        musicPlaySettings.AudioPlaySettings.Volume = 0.25f;
+
+        MusicManager.Instance.PlayMusicGroup(AudioGroupID.MainMenuTracks, musicPlaySettings);
     }
 
     /// <summary>
