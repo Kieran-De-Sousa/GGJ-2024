@@ -51,7 +51,24 @@ public class TestPlayerScript : MonoBehaviour
 
     public void Slap(InputAction.CallbackContext info)
     {
-        GetComponent<Animator>().SetTrigger("Slap");
+        if (!GetComponent<Animator>().GetBool("Slap"))
+        {
+            GetComponent<Animator>().SetTrigger("Slap");
+            slapHitbox.gameObject.SetActive(true);
+
+            Debug.Log($"Slapped = {slapHitbox.gameObject.activeSelf}");
+
+            StopAllCoroutines();
+            StartCoroutine(SlapHitboxTime());
+        }
+    }
+
+    IEnumerator SlapHitboxTime()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        slapHitbox.gameObject.SetActive(false);
+        Debug.Log($"Slapped = {slapHitbox.gameObject.activeSelf}");
     }
 
     public void Update()

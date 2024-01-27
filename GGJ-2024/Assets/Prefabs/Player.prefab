@@ -1370,6 +1370,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 99639b5f-f3a9-4d81-a1c4-85b3af8890e2
     m_ActionName: UI/Start[/XInputControllerWindows1/start,/XInputControllerWindows/start,/DualSenseGamepadHID/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4f95efc-935c-4768-ac83-2baf5801cf4a
+    m_ActionName: UI/Select[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: afbce780-d2ca-446f-b32f-f80d4d506468
+    m_ActionName: UI/Return[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 815dc04f-4fd0-4354-a6ab-bd902fd2a002
+    m_ActionName: UI/ChangeButton[/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/up,/Keyboard/downArrow,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 78a2d3ee-6731-45aa-885c-d911d9fda71e
+    m_ActionName: Ragdoll/Spawn[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1388,7 +1404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 5
-  slapHitbox: {fileID: 0}
+  slapHitbox: {fileID: 2920679272552374031}
   slapForce: 100
   slapData: {fileID: 5686123125649068069}
 --- !u!114 &4035987114835424745
@@ -3703,7 +3719,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 2
