@@ -5,47 +5,49 @@ using UnityEngine;
 public class Ragdoll : MonoBehaviour
 {
     [SerializeField] Collider myCollider;
+    [SerializeField] Rigidbody myRigidbody;
+    [SerializeField] GameObject rootObject;
     [SerializeField] float respawnTime = 30f;
-    Rigidbody[] rigidbodies;
-    bool bIsRagdoll = false;
+    Collider[] allColliders;
+    List<Collider> childColliders;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        rigidbodies = GetComponentsInChildren<Rigidbody>();
-        ToggleRagdoll(true);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!bIsRagdoll && collision.gameObject.tag == "Projectile")
+        childColliders = new List<Collider>();
+        allColliders = GetComponentsInChildren<Collider>();
+        foreach (Collider ragdollCollider in allColliders)
         {
-            ToggleRagdoll(false);
-            StartCoroutine(GetBackUp());
-        }
-    }
-
-    private void ToggleRagdoll(bool bisAnimating)
-    {
-        bIsRagdoll = !bisAnimating;
-
-        myCollider.enabled = bisAnimating;
-        foreach (Rigidbody ragdollBone in rigidbodies)
-        {
-            //ragdollBone.isKinematic = bisAnimating;
+            if (ragdollCollider != myCollider)
+            {
+                childColliders.Add(ragdollCollider);
+            }
         }
 
-        GetComponent<Animator>().enabled = bisAnimating;
-        if(bisAnimating)
+        foreach (Collider ragdollCollider in childColliders)
         {
-            //RandomAnimation();
+            ragdollCollider.enabled = false;
+        }
+
+        ToggleRagdoll(false);
+    }
+
+    public void ToggleRagdoll(bool bIsRagdoll)
+    {
+        GetComponent<Animator>().enabled = !bIsRagdoll;
+        myRigidbody.useGravity = !bIsRagdoll;
+        myCollider.enabled = !bIsRagdoll;
+
+        foreach (Collider ragdollCollider in childColliders)
+        {
+            ragdollCollider.enabled = bIsRagdoll;
         }
     }
 
     private IEnumerator GetBackUp()
     {
         yield return new WaitForSeconds(respawnTime);
-        ToggleRagdoll(true);
+        ToggleRagdoll(false);
+        this.transform.position = rootObject.transform.position + new Vector3(0f, 0.5f, 0f);
     }
 
     void RandomAnimation()
@@ -61,11 +63,5 @@ public class Ragdoll : MonoBehaviour
         {
             //animator.SetTrigger("Idle");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

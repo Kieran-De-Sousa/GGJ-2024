@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 7536450257717198691}
   - component: {fileID: 4481726177963214089}
   - component: {fileID: 8741925941312251909}
+  - component: {fileID: 558680212306774252}
   m_Layer: 5
   m_Name: Laugh Bar
   m_TagString: Untagged
@@ -167,3 +168,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillAmount: 0
   fillMax: 100
+--- !u!114 &558680212306774252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301819791007074636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad7a04b80700624281a8b6633667427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8741925941312251909}
+        m_TargetAssemblyTypeName: LaughBarScript, Assembly-CSharp
+        m_MethodName: UpdateFill
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
