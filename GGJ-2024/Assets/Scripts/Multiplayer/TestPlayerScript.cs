@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class TestPlayerScript : MonoBehaviour
 {
+    public int PlayerIndex { get; private set; } 
+
     public float move_speed;
 
     [Header("Slapping")]
@@ -22,6 +24,8 @@ public class TestPlayerScript : MonoBehaviour
         CinemachineTargetGroup targets = FindObjectOfType<CinemachineTargetGroup>();
         if (targets != null)
             UpdateTargetGroup(targets);
+
+        PlayerIndex = GetComponent<PlayerInput>().playerIndex;
     }
 
     /// <summary>
@@ -34,7 +38,7 @@ public class TestPlayerScript : MonoBehaviour
         {
             if (group.m_Targets[i].target == null)
             {
-                group.m_Targets[i].target = transform;
+                group.m_Targets[i].target = transform.GetChild(0).GetChild(0);
                 return;
             }
         }

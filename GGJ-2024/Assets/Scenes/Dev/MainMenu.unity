@@ -3291,6 +3291,7 @@ MonoBehaviour:
   - {fileID: 1173414755}
   - {fileID: 1059071802}
   - {fileID: 57347511}
+  min_players: 1
   arrow: {fileID: 1410671897}
   arrow_positions:
   - {x: -400, y: -100}

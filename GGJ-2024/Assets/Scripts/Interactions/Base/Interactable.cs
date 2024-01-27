@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public abstract void Interact();
+    public virtual void Interact() {}
+    public virtual void Interact(TestPlayerScript playerScript) {}
 }

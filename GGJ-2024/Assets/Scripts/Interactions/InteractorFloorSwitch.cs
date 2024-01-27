@@ -25,7 +25,7 @@ public class InteractorFloorSwitch : InteractorBase
          // TODO: Cooldown
          if (other.CompareTag("Player"))
          {
-             Interact();
+             Interact(other.GetComponent<TestPlayerScript>());
          }
      }
 }

@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
     private ControlScheme controls;
     private int selected_button = 0;
     private bool in_join_mode = false;
+    public int min_players = 1;
     public RectTransform arrow;
     public List<Vector2> arrow_positions;
 
@@ -26,6 +27,14 @@ public class Menu : MonoBehaviour
         controls.UI.Select.performed += SelectButton;
         controls.UI.Return.performed += ReturnButton;
         controls.UI.ChangeButton.performed += ChangeButton;
+    }
+
+    private void OnDisable()
+    {
+        controls.UI.Select.performed -= SelectButton;
+        controls.UI.Return.performed -= ReturnButton;
+        controls.UI.ChangeButton.performed -= ChangeButton;
+        controls.UI.Disable();
     }
 
     private void SelectButton(InputAction.CallbackContext context)
@@ -56,7 +65,6 @@ public class Menu : MonoBehaviour
         else if (selected_button < 0)
             selected_button = 1;
         arrow.anchoredPosition = arrow_positions[selected_button];
-        Debug.Log(selected_button);
     }
 
     private void Start()
@@ -143,6 +151,7 @@ public class Menu : MonoBehaviour
         }
         GameData.player_count = playerInputManager.playerCount;
         SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
+        ScoreManager.Instance.ClearAllScores();
     }
 
     /// <summary>
@@ -151,6 +160,6 @@ public class Menu : MonoBehaviour
     /// <returns>Bool if game can be started</returns>
     private bool StartCheck()
     {
-        return playerInputManager.playerCount >= 2;
+        return playerInputManager.playerCount >= min_players;
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2106136332435885160}
   - component: {fileID: 1610252469440355501}
   - component: {fileID: 5684346561093622691}
+  - component: {fileID: 2820128888321686924}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -133,6 +134,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &2820128888321686924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403580985089225563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comedyTriggered: 0
+  comedyAmount: 5
+  comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
+  ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
 --- !u!1 &7641773521153898620
 GameObject:
   m_ObjectHideFlags: 0
