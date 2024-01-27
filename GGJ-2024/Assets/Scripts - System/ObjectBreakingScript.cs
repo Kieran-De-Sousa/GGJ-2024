@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ObjectBreakingScript : MonoBehaviour
 {
-    public GameObject objectBreakingParticle;
+    [SerializeField] private GameObject objectBreakingParticle;
 
     private Rigidbody _rigidbody;
     private float _velocity;
@@ -18,13 +18,6 @@ public class ObjectBreakingScript : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    private void OnDestroy()
-    {
-        GameObject particle = Instantiate(objectBreakingParticle, transform.position, Quaternion.identity);
-        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
-        particle.transform.rotation = rotation;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,6 +40,10 @@ public class ObjectBreakingScript : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+                
+                GameObject particle = Instantiate(objectBreakingParticle, transform.position, Quaternion.identity);
+                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+                particle.transform.rotation = rotation;
             }
         }
     }
@@ -54,5 +51,12 @@ public class ObjectBreakingScript : MonoBehaviour
     private void Update()
     {
         _velocity = _rigidbody.velocity.magnitude;
+        
+        //should be removed
+        health -= 2 * Time.deltaTime;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
