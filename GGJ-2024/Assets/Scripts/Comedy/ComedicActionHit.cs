@@ -36,11 +36,7 @@ public class ComedicActionHit : ComedicActionBase
             comedyEvent.Raise(this, comedyAmount);
             ragdollEvent.Raise(this, collider);
 
-            AudioPlaySettings playSettings = AudioPlaySettings.Default;
-
-            playSettings.Volume = 100f;
-            playSettings.Position = transform.position;
-            AudioManager.Instance.PlayEffect(AudioID.Slap, AudioMixerID.SFX, playSettings);
+            PlayAudio();
 
         }
     }

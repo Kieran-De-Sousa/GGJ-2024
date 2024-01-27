@@ -47,6 +47,10 @@ public class Ragdoll : MonoBehaviour
         {
             ragdollCollider.enabled = bIsRagdoll;
         }
+
+        AudioPlaySettings playSettings = AudioPlaySettings.Default;
+        playSettings.Position = transform.position;
+        AudioManager.Instance.PlayEffect(AudioID.Ragdoll, AudioMixerID.SFX, playSettings);
     }
 
     public void ToggleRagdollAndCoroutine(bool bIsRagdoll)

@@ -9,4 +9,6 @@ public enum AudioID : uint
     Slap,
     MainMenuMusic,
     CannonFire,
+    Slapped,
+    Ragdoll,
 }
