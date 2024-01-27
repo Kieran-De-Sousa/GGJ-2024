@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class TestPlayerScript : MonoBehaviour
 {
+    public int PlayerIndex { get; private set; } 
+
     public float move_speed;
     private Vector2 move_vec;
     private Rigidbody rb;
@@ -16,6 +18,8 @@ public class TestPlayerScript : MonoBehaviour
         CinemachineTargetGroup targets = FindObjectOfType<CinemachineTargetGroup>();
         if (targets != null)
             UpdateTargetGroup(targets);
+
+        PlayerIndex = GetComponent<PlayerInput>().playerIndex;
     }
 
     /// <summary>
