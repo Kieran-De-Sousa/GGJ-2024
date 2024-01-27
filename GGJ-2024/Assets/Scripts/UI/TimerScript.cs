@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TimerScript : MonoBehaviour
 {
-    [SerializeField] private int timeMinutes = 5;
+    [SerializeField] private int timeMinutes = 2;
     [SerializeField] private int timeSeconds = 0;
     [SerializeField] private int timer;
     [SerializeField] private int eventTimer = 5;
@@ -30,9 +31,23 @@ public class TimerScript : MonoBehaviour
         _timerCounter -= 1 * Time.deltaTime;
         if (_timerCounter <= 0)
         {
-            _timerCounter = 1;
+            _timerCounter += 1;
 
             timer -= 1;
+            if (timer <= 0)
+            {
+                if (FindObjectOfType<LaughBarScript>().fillAmount >= 90)
+                {
+                    // Win
+                    GameData.winner = ScoreManager.Instance.GetHighestScore();
+                    SceneManager.LoadScene("WinScreen");
+                }
+                else
+                {
+                    // Lose
+                    SceneManager.LoadScene("LoseScreen");
+                }
+            }
             
             timeMinutes = timer / 60;
             timeSeconds = timer % 60;

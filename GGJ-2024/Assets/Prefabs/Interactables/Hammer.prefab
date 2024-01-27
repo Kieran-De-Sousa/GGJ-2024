@@ -49,6 +49,9 @@ MonoBehaviour:
   lifeSpanInSeconds: 10
   rotationEulerAnglesRange: {x: 0, y: 240}
   rotationEulerAngle: 0
+  heightOnSpawn: 35
+  heightOnOscillation: 25
+  _stopping: 0
 --- !u!1 &4499136786056192471
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +205,7 @@ GameObject:
   - component: {fileID: 1883922468654800535}
   - component: {fileID: 4909220548230051381}
   - component: {fileID: 488545342868086694}
+  - component: {fileID: 839356084414951270}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -322,3 +326,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &839356084414951270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7593123877730828963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comedyTriggered: 0
+  comedyAmount: 3
+  comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
+  ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
