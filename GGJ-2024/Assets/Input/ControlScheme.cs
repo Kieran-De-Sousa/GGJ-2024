@@ -53,6 +53,15 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ac1617ce-3657-4d05-b81e-e24b1b05cf12"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,72 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
                     ""action"": ""Slap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c30f59ae-915c-4188-9d82-c62b49ee0321"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""d6342a1b-1e22-4c40-88be-39c2a0c82354"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""04a72131-83cc-42ae-bc54-13c4c82b4c45"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""62c98ba4-279b-4f53-8181-5a459ee23487"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""663fe513-c216-4574-9527-468ddcd33cc8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2a1e60e9-ab03-4747-9fd0-ea61b83550ab"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -238,6 +313,7 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Slap = m_Gameplay.FindAction("Slap", throwIfNotFound: true);
+        m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Start = m_UI.FindAction("Start", throwIfNotFound: true);
@@ -305,6 +381,7 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Slap;
+    private readonly InputAction m_Gameplay_Rotate;
     public struct GameplayActions
     {
         private @ControlScheme m_Wrapper;
@@ -312,6 +389,7 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Slap => m_Wrapper.m_Gameplay_Slap;
+        public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +408,9 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
             @Slap.started += instance.OnSlap;
             @Slap.performed += instance.OnSlap;
             @Slap.canceled += instance.OnSlap;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -343,6 +424,9 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
             @Slap.started -= instance.OnSlap;
             @Slap.performed -= instance.OnSlap;
             @Slap.canceled -= instance.OnSlap;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -429,6 +513,7 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSlap(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

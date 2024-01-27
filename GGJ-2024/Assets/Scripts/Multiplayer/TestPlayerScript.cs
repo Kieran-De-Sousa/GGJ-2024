@@ -7,12 +7,16 @@ using Cinemachine;
 public class TestPlayerScript : MonoBehaviour
 {
     public float move_speed;
+    public float rotate_speed;
     private Vector2 move_vec;
     private Rigidbody rb;
+    private Vector2 rotate_vec;
+    private Ragdoll ragdollScript;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        ragdollScript = GetComponent<Ragdoll>();
         CinemachineTargetGroup targets = FindObjectOfType<CinemachineTargetGroup>();
         if (targets != null)
             UpdateTargetGroup(targets);
@@ -43,8 +47,21 @@ public class TestPlayerScript : MonoBehaviour
         move_vec = info.ReadValue<Vector2>();
     }
 
+    public void Rotate(InputAction.CallbackContext info)
+    {
+        rotate_vec = info.ReadValue<Vector2>();
+    }
+
     public void Update()
     {
-        rb.velocity = new Vector3(move_vec.x * move_speed, Mathf.Clamp(rb.velocity.y, -10, 10), move_vec.y * move_speed);
+        //Debug.Log(rotate_vec);
+        if (!ragdollScript.isRagdolling)
+        {
+            rb.velocity = new Vector3(move_vec.x * move_speed, Mathf.Clamp(rb.velocity.y, -10, 10), move_vec.y * move_speed);
+
+            float rotationAngle = Mathf.Atan2(rotate_vec.x, rotate_vec.y) * Mathf.Rad2Deg;
+            //Debug.Log(rotationAngle);
+            transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f) * Quaternion.identity;
+        }
     }
 }

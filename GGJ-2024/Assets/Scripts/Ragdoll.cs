@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ragdoll : MonoBehaviour
@@ -10,6 +11,7 @@ public class Ragdoll : MonoBehaviour
     [SerializeField] float respawnTime = 30f;
     Collider[] allColliders;
     List<Collider> childColliders;
+    public bool isRagdolling = false;
 
     void Awake()
     {
@@ -36,6 +38,16 @@ public class Ragdoll : MonoBehaviour
         GetComponent<Animator>().enabled = !bIsRagdoll;
         myRigidbody.useGravity = !bIsRagdoll;
         myCollider.enabled = !bIsRagdoll;
+        if (bIsRagdoll)
+        {
+            myRigidbody.constraints = RigidbodyConstraints.FreezePositionY;
+            isRagdolling = true;
+        }
+        else
+        {
+            myRigidbody.constraints = RigidbodyConstraints.None;
+            isRagdolling = false;
+        }
 
         foreach (Collider ragdollCollider in childColliders)
         {
