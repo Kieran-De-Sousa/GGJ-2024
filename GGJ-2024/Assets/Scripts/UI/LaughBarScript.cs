@@ -32,10 +32,13 @@ public class LaughBarScript : MonoBehaviour
         FillCheck();
     }
 
-    public void UpdateFill(float amount)
+    public void UpdateFill(Component sender, object amount)
     {
-        fillAmount += amount;
-        FillCheck();
+        if (amount is float value)
+        {
+            fillAmount += value;
+            FillCheck();
+        }
     }
 
     /// <summary>
