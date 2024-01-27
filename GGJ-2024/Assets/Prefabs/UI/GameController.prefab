@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 623736025187474671}
   - component: {fileID: 1774033026262377914}
+  - component: {fileID: -2439441461366381568}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -49,3 +50,18 @@ MonoBehaviour:
   spawnHeight: 25
   spawnRadius: 70
   spawnForceRange: {x: 30, y: 70}
+--- !u!114 &-2439441461366381568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911233697701054382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ded46f5d632c504fa3db8d1c0f805d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 1444181912435196079, guid: ac1412f53e1b85c46936d9d57101da04, type: 3}
+  - {fileID: 7641773521153898620, guid: 83443d501774e4b449fb3963f6ea7530, type: 3}

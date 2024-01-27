@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TimerScript : MonoBehaviour
 {
-    public int timeMinutes = 5;
-    public int timeSeconds = 0;
-    public int timer;
+    [SerializeField] private int timeMinutes = 5;
+    [SerializeField] private int timeSeconds = 0;
+    [SerializeField] private int timer;
+    [SerializeField] private int eventTimer = 5;
+    [SerializeField] private Vector2 eventTimerRange = new Vector2(1, 15);
+    
     
     private float _timerCounter = 1;
 
@@ -36,7 +40,22 @@ public class TimerScript : MonoBehaviour
             SetString(timeMinutes, timeSeconds);
             
             _gameController.GetComponent<BreakableObjectSpawningScript>().SpawnObject(timer);
+
+            eventTimer -= 1;
+            if (eventTimer <= 0)
+            {
+                eventTimer = GetNewTimer();
+                
+                _gameController.GetComponent<FunnyEventsControllerScript>().SummonRandomEvent();
+            }
         }
+    }
+
+    private int GetNewTimer()
+    {
+        int newTimer = (int)(Random.Range(eventTimerRange.x, eventTimerRange.y));
+
+        return newTimer;
     }
 
     public void SetString(int timeMinute, int timeSecond)
