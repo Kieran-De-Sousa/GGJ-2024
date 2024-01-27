@@ -64,13 +64,4 @@ public class Ragdoll : MonoBehaviour
             //animator.SetTrigger("Idle");
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            ToggleRagdoll(true);
-            StartCoroutine(GetBackUp());
-        }
-    }
 }
