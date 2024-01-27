@@ -23,18 +23,33 @@ public class LaughBarScript : MonoBehaviour
     public void AddFill(float amount)
     {
         fillAmount += amount;
-
-        if (fillAmount > fillMax)
-        {
-            fillAmount = fillMax;
-        }
+        FillCheck();
     }
 
     public void ReduceFill(float amount)
     {
         fillAmount -= amount;
+        FillCheck();
+    }
 
-        if (fillAmount < 0)
+    public void UpdateFill(float amount)
+    {
+        fillAmount += amount;
+        FillCheck();
+    }
+
+    /// <summary>
+    /// Ensure fill amount is within fill min-max values.
+    /// </summary>
+    /// <author>Kieran</author>
+    public void FillCheck()
+    {
+        if (fillAmount > fillMax)
+        {
+            fillAmount = fillMax;
+        }
+
+        else if (fillAmount < 0)
         {
             fillAmount = 0;
         }

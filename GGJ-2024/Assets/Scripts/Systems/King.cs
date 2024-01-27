@@ -25,10 +25,9 @@ public class King : MonoBehaviour
 
     public void OnUpdateComedyValue(Component sender, object comedy)
     {
-        if (comedy is float)
+        if (comedy is float value)
         {
-            float value = (float) comedy;
-            comedyValue += (float) comedy;
+            comedyValue += value;
         }
     }
 }
