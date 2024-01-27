@@ -15,12 +15,18 @@ public class MenuPlayerIcon : MonoBehaviour
         p_icon.enabled = false;
     }
 
+    /// <summary>
+    /// Update images with joined player
+    /// </summary>
     public void Join()
     {
         a_button.enabled = false;
         p_icon.enabled = true;
     }
 
+    /// <summary>
+    /// Update images with left player
+    /// </summary>
     public void Leave()
     {
         a_button.enabled = true;

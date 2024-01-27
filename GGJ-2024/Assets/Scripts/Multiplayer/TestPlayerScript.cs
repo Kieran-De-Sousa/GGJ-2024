@@ -18,6 +18,10 @@ public class TestPlayerScript : MonoBehaviour
             UpdateTargetGroup(targets);
     }
 
+    /// <summary>
+    /// Update target group for cinemachine
+    /// </summary>
+    /// <param name="group"></param>
     private void UpdateTargetGroup(CinemachineTargetGroup group)
     {
         for (int i = 0; i < 4; i++)
@@ -30,6 +34,10 @@ public class TestPlayerScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update player movement direction
+    /// </summary>
+    /// <param name="info">CallbackContext of input information</param>
     public void Move(InputAction.CallbackContext info)
     {
         move_vec = info.ReadValue<Vector2>();
