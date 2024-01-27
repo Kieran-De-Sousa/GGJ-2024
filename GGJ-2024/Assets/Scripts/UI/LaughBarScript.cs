@@ -14,7 +14,7 @@ public class LaughBarScript : MonoBehaviour
 
     private void Awake()
     {
-        _barFill = transform.GetChild(0).transform.GetComponent<Image>();
+        _barFill = transform.GetChild(1).transform.GetComponent<Image>();
         
         fillAmount = 0;
         _currentFillAmount = fillAmount;
