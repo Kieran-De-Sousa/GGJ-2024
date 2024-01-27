@@ -10,11 +10,11 @@ public class TestPlayerScript : MonoBehaviour
     private Vector2 move_vec;
     private Rigidbody rb;
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        CinemachineTargetGroup targets;
-        if (TryGetComponent(out targets))
+        CinemachineTargetGroup targets = FindObjectOfType<CinemachineTargetGroup>();
+        if (targets != null)
             UpdateTargetGroup(targets);
     }
 
