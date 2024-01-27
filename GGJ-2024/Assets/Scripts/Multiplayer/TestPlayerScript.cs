@@ -34,7 +34,7 @@ public class TestPlayerScript : MonoBehaviour
         {
             if (group.m_Targets[i].target == null)
             {
-                group.m_Targets[i].target = transform;
+                group.m_Targets[i].target = transform.GetChild(0).GetChild(0);
                 return;
             }
         }
