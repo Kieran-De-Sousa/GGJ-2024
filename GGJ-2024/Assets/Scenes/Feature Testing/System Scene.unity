@@ -3091,6 +3091,11 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 360
       objectReference: {fileID: 0}
+    - target: {fileID: 1070819282116264160, guid: ac1412f53e1b85c46936d9d57101da04,
+        type: 3}
+      propertyPath: lifeSpanInSeconds
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1444181912435196079, guid: ac1412f53e1b85c46936d9d57101da04,
         type: 3}
       propertyPath: m_Name
@@ -3114,7 +3119,7 @@ PrefabInstance:
     - target: {fileID: 7942182189096836121, guid: ac1412f53e1b85c46936d9d57101da04,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.44
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7942182189096836121, guid: ac1412f53e1b85c46936d9d57101da04,
         type: 3}
