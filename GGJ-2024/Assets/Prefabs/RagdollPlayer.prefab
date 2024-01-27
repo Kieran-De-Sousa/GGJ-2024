@@ -1255,6 +1255,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 582064200327705307}
   rootObject: {fileID: 8321745705471127050}
   respawnTime: 5
+  playerAnimator: {fileID: 0}
 --- !u!65 &2373803712623939273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1369,6 +1370,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 815dc04f-4fd0-4354-a6ab-bd902fd2a002
     m_ActionName: UI/ChangeButton[/XInputControllerWindows1/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows1/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/leftStick/up,/Keyboard/downArrow,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 78a2d3ee-6731-45aa-885c-d911d9fda71e
+    m_ActionName: Ragdoll/Spawn[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1387,6 +1392,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 5
+  slapHitbox: {fileID: 0}
+  slapForce: 100
+  slapData: {fileID: 0}
 --- !u!114 &4035987114835424745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1409,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 1831355813407276141, guid: 6aabf92e5a2ae574c83713985eed9cc3,
     type: 3}
-  playerColor: {r: 1, g: 0, b: 0, a: 1}
+  playerColor:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.92518723, b: 0, a: 1}
 --- !u!114 &-4811642778800545393
 MonoBehaviour:
   m_ObjectHideFlags: 0
