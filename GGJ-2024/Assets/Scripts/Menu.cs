@@ -74,7 +74,7 @@ public class Menu : MonoBehaviour
                 Debug.Log(GameData.devices[i]);
         Debug.Log(GameData.player_count);
 
-        SceneManager.LoadScene("OscarScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
     }
 
     private bool StartCheck()
