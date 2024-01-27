@@ -10,11 +10,66 @@ public class Menu : MonoBehaviour
     private PlayerInputManager playerInputManager;
     public MenuPlayerIcon[] icons;
     private PlayerInput[] players = new PlayerInput[4];
+    private ControlScheme controls;
+    private int selected_button = 0;
+    private bool in_join_mode = false;
+    public RectTransform arrow;
+    public List<Vector2> arrow_positions;
 
     private void Awake()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.DisableJoining();
+
+        controls = new ControlScheme();
+        controls.UI.Enable();
+        controls.UI.Select.performed += SelectButton;
+        controls.UI.Return.performed += ReturnButton;
+        controls.UI.ChangeButton.performed += ChangeButton;
+    }
+
+    private void SelectButton(InputAction.CallbackContext context)
+    {
+        if (in_join_mode)
+            return;
+        if (selected_button == 0)
+            Play();
+        else if (selected_button == 1)
+            Quit();
+    }
+
+    private void ReturnButton(InputAction.CallbackContext context)
+    {
+        if (!in_join_mode)
+            return;
+        ExitJoin();
+    }
+
+    private void ChangeButton(InputAction.CallbackContext context)
+    {
+        if (in_join_mode)
+            return;
+        selected_button-=(int)context.ReadValue<float>();
+        // OPEN FOR THE POSSIBILITY OF MORE MENU BUTTONS
+        if (selected_button > 1)
+            selected_button = 0;
+        else if (selected_button < 0)
+            selected_button = 1;
+        arrow.anchoredPosition = arrow_positions[selected_button];
+        Debug.Log(selected_button);
+    }
+
+    private void Start()
+    {
+        Invoke(nameof(StartMusic), 0.25f);
+    }
+
+    private void StartMusic()
+    {
+        MusicPlaySettings musicPlaySettings = MusicPlaySettings.Default;
+        musicPlaySettings.AudioPlaySettings.Volume = 0.25f;
+
+        MusicManager.Instance.PlayMusicGroup(AudioGroupID.MainMenuTracks, musicPlaySettings);
     }
 
     /// <summary>
@@ -22,6 +77,7 @@ public class Menu : MonoBehaviour
     /// </summary>
     public void Play()
     {
+        in_join_mode = true;
         anim.SetTrigger("JoinStart");
         playerInputManager.EnableJoining();
     }
@@ -39,6 +95,7 @@ public class Menu : MonoBehaviour
     /// </summary>
     public void ExitJoin()
     {
+        in_join_mode = false;
         anim.SetTrigger("JoinEnd");
         playerInputManager.DisableJoining();
     }

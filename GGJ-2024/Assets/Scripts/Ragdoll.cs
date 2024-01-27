@@ -8,8 +8,13 @@ public class Ragdoll : MonoBehaviour
     [SerializeField] Rigidbody myRigidbody;
     [SerializeField] GameObject rootObject;
     [SerializeField] float respawnTime = 30f;
+
     Collider[] allColliders;
     List<Collider> childColliders;
+
+    public Animator playerAnimator;
+
+    private bool isRagdolling = false;
 
     void Awake()
     {
@@ -33,6 +38,7 @@ public class Ragdoll : MonoBehaviour
 
     public void ToggleRagdoll(bool bIsRagdoll)
     {
+        isRagdolling = bIsRagdoll;
         GetComponent<Animator>().enabled = !bIsRagdoll;
         myRigidbody.useGravity = !bIsRagdoll;
         myCollider.enabled = !bIsRagdoll;
@@ -43,10 +49,19 @@ public class Ragdoll : MonoBehaviour
         }
     }
 
+    public void ToggleRagdollAndCoroutine(bool bIsRagdoll)
+    {
+        ToggleRagdoll(bIsRagdoll);
+        StartCoroutine(GetBackUp());
+    }
+
     private IEnumerator GetBackUp()
     {
         yield return new WaitForSeconds(respawnTime);
+
         ToggleRagdoll(false);
+        playerAnimator.SetTrigger("GetUp");
+
         this.transform.position = rootObject.transform.position + new Vector3(0f, 0.5f, 0f);
     }
 
@@ -62,6 +77,15 @@ public class Ragdoll : MonoBehaviour
         else
         {
             //animator.SetTrigger("Idle");
+        }
+    }
+
+    public void OnRagdollEvent(Component sender, object data)
+    {
+        Collider temp = (Collider) data;
+        if (temp.gameObject == this.gameObject)
+        {
+            ToggleRagdollAndCoroutine(true);
         }
     }
 }

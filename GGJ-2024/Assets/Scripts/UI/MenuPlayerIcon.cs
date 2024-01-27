@@ -29,7 +29,9 @@ public class MenuPlayerIcon : MonoBehaviour
     /// </summary>
     public void Leave()
     {
-        a_button.enabled = true;
-        p_icon.enabled = false;
+        if (a_button)
+            a_button.enabled = true;
+        if (p_icon)
+            p_icon.enabled = false;
     }
 }

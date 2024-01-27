@@ -7,6 +7,12 @@ using Cinemachine;
 public class TestPlayerScript : MonoBehaviour
 {
     public float move_speed;
+
+    [Header("Slapping")]
+    public Collider slapHitbox;
+    public float slapForce = 100;
+    public ComedicActionHit slapData;
+
     private Vector2 move_vec;
     private Rigidbody rb;
 
@@ -41,6 +47,11 @@ public class TestPlayerScript : MonoBehaviour
     public void Move(InputAction.CallbackContext info)
     {
         move_vec = info.ReadValue<Vector2>();
+    }
+
+    public void Slap(InputAction.CallbackContext info)
+    {
+        GetComponent<Animator>().SetTrigger("Slap");
     }
 
     public void Update()
