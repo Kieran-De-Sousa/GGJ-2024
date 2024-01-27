@@ -14,12 +14,12 @@ public class PlayerGenerator : MonoBehaviour
             JoinAllPlayers();
     }
 
+    /// <summary>
+    /// Force join all players with connected devices
+    /// </summary>
     private void JoinAllPlayers()
     {
-        Debug.Log(GameData.player_count);
         for (int i = 0; i < GameData.player_count; i++)
-        {
-            manager.JoinPlayer(i, i, "Control Scheme", GameData.devices[i]).transform.position = spawn_points[i];
-        }
+            manager.JoinPlayer(i, i, "", GameData.devices[i]).transform.position = spawn_points[i];
     }
 }
