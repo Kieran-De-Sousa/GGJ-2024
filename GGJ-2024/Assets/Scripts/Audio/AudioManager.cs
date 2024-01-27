@@ -195,7 +195,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         AudioSource voice = null;
         voice = _voicePool.Where(v => !v.isPlaying).FirstOrDefault();
-        Debug.Assert(false, $"Couldn't find an available voice. Consider increasing the pool size?");
+        //Debug.Assert(false, $"Couldn't find an available voice. Consider increasing the pool size?");
         return voice;
     }
 

@@ -6,5 +6,7 @@ public enum AudioID : uint
     // NOTE - BUT ALL NEW ENTRIES BELOW THE BOTTOM ENTRY. OTHERWISE THE ENUMS WILL BE REORDERED AND EVERYTHING WILL BREAK :)
 
     None,
-    Slap
+    Slap,
+    MainMenuMusic,
+    CannonFire,
 }

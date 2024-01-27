@@ -17,6 +17,16 @@ public class Menu : MonoBehaviour
         playerInputManager.DisableJoining();
     }
 
+    private void Start()
+    {
+        Invoke(nameof(StartMusic), 0.25f);
+    }
+
+    private void StartMusic()
+    {
+        MusicManager.Instance.PlayMusicGroup(AudioGroupID.MainMenuTracks, MusicPlaySettings.Default);
+    }
+
     /// <summary>
     /// UI reference to play button
     /// </summary>
