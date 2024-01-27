@@ -33,6 +33,7 @@ public class RagdollGenerator : MonoBehaviour
 
     private void SpawnRagdoll(InputAction.CallbackContext context)
     {
-        Instantiate(ragdoll_prefab, new Vector3(0, 10, 0), Quaternion.identity);
+        GameObject obj = Instantiate(ragdoll_prefab, new Vector3(0, 10, 0), Quaternion.identity);
+        obj.GetComponent<PlayerUIScript>().AwakeUI(Random.Range(0,4));
     }
 }

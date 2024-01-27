@@ -1421,7 +1421,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 1831355813407276141, guid: 6aabf92e5a2ae574c83713985eed9cc3,
     type: 3}
-  playerColor: {r: 1, g: 0, b: 0, a: 1}
+  playerColor:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.92518723, b: 0, a: 1}
 --- !u!114 &-4811642778800545393
 MonoBehaviour:
   m_ObjectHideFlags: 0
