@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,14 +13,14 @@ using UnityEngine;
 /// <seealso cref="https://www.gamedevbeginner.com/events-and-delegates-in-unity/"/>
 /// <author>Kieran</author>
 [CreateAssetMenu(menuName = "GameEvent")]
-public class GameEvent : ScriptableObject
+[Serializable] public class GameEvent : ScriptableObject
 {
     public List<GameEventListener> listeners = new List<GameEventListener>();
 
     /// <summary>
     /// Loops through all Listeners and calls their 'OnEventRaised' method
     /// </summary>
-    public void Raise(Component sender, params object[] data)
+    public void Raise(Component sender, object data)
     {
         foreach (GameEventListener listener in listeners)
         {

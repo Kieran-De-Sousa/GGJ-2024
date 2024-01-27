@@ -18,8 +18,8 @@ public class CustomGameEvent : UnityEvent<Component, object> {}
 /// <author>Kieran</author>
 public class GameEventListener : MonoBehaviour
 {
-    public GameEvent gameEvent;
-    public CustomGameEvent response;
+    public GameEvent gameEvent = null;
+    public CustomGameEvent response = null;
 
     private void OnEnable()
     {
@@ -31,7 +31,7 @@ public class GameEventListener : MonoBehaviour
         gameEvent.UnregisterListener(this);
     }
 
-    public void OnEventRaised(Component sender, params object[] data)
+    public void OnEventRaised(Component sender, object data)
     {
         response?.Invoke(sender, data);
     }
