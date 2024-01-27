@@ -24,17 +24,17 @@ public class ComedicActionHit : ComedicActionBase
         if (other.CompareTag("Player"))
         {
             Debug.Log("Comedy Event Raised!");
-            ComedyTriggered();
+            ComedyTriggered(other);
         }
     }
 
-    public override void ComedyTriggered()
+    public override void ComedyTriggered(Collider collider)
     {
         if (!comedyTriggered)
         {
             comedyTriggered = true;
             comedyEvent.Raise(this, comedyAmount);
-            ragdollEvent.Raise(this, 0);
+            ragdollEvent.Raise(this, collider);
         }
     }
 }
