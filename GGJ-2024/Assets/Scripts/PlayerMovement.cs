@@ -5,29 +5,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private ControlScheme input;
+    private ControlScheme moveInput;
     private Vector3 moveVector = Vector3.zero;
     private Rigidbody rb = null;
     [SerializeField] private float moveSpeed = 2f;
 
     private void Awake()
     {
-        input = new ControlScheme();
+        moveInput = new ControlScheme();
         rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
-        input.Enable();
-        input.Gameplay.Move.performed += OnMovementPerformed;
-        input.Gameplay.Move.canceled += OnMovementCancelled;
+        moveInput.Enable();
+        moveInput.Gameplay.Move.performed += OnMovementPerformed;
+        moveInput.Gameplay.Move.canceled += OnMovementCancelled;
     }
 
     private void OnDisable()
     {
-        input.Disable();
-        input.Gameplay.Move.performed -= OnMovementPerformed;
-        input.Gameplay.Move.canceled -= OnMovementCancelled;
+        moveInput.Disable();
+        moveInput.Gameplay.Move.performed -= OnMovementPerformed;
+        moveInput.Gameplay.Move.canceled -= OnMovementCancelled;
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext context)
