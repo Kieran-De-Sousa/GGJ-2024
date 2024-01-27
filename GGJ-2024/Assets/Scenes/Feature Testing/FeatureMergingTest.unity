@@ -1236,6 +1236,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 5781458672436812626, guid: b43d1a19cb3b5a645a4b4ec67ded1b3c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6436526552159153205, guid: b43d1a19cb3b5a645a4b4ec67ded1b3c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1244,7 +1249,7 @@ PrefabInstance:
     - target: {fileID: 6436526552159153205, guid: b43d1a19cb3b5a645a4b4ec67ded1b3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 6436526552159153205, guid: b43d1a19cb3b5a645a4b4ec67ded1b3c,
         type: 3}
@@ -1419,7 +1424,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cd5a6facd5a90c1448aee818d238062e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
