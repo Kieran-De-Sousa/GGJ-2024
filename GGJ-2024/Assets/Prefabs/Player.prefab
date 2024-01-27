@@ -1254,6 +1254,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 582064200327705307}
   rootObject: {fileID: 8321745705471127050}
   respawnTime: 5
+  playerAnimator: {fileID: 4540229000190281644}
 --- !u!65 &2373803712623939273
 BoxCollider:
   m_ObjectHideFlags: 0
