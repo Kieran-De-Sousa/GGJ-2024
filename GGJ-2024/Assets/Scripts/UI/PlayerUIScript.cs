@@ -16,5 +16,7 @@ public class PlayerUIScript : MonoBehaviour
         
         _indicator = Instantiate(indicatorPrefab, transform.position, Quaternion.identity);
         _indicator.GetComponent<PlayerIndicatorScript>().SetOwner(transform.gameObject);
+
+        Debug.Log("Test");
     }
 }
