@@ -17,23 +17,36 @@ public class Menu : MonoBehaviour
         playerInputManager.DisableJoining();
     }
 
+    /// <summary>
+    /// UI reference to play button
+    /// </summary>
     public void Play()
     {
         anim.SetTrigger("JoinStart");
         playerInputManager.EnableJoining();
     }
 
+    /// <summary>
+    /// UI Reference to quit button
+    /// </summary>
     public void Quit()
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// UI reference to exit button
+    /// </summary>
     public void ExitJoin()
     {
         anim.SetTrigger("JoinEnd");
         playerInputManager.DisableJoining();
     }
 
+    /// <summary>
+    /// Player has joined event
+    /// </summary>
+    /// <param name="info">PlayerInput of player that has joined</param>
     public void PlayerJoin(PlayerInput info)
     {
         if (info.playerIndex <= 3 && info.playerIndex >= 0)
@@ -41,9 +54,12 @@ public class Menu : MonoBehaviour
             icons[info.playerIndex].Join();
             players[info.playerIndex] = info;
         }
-        Debug.Log(info.playerIndex);
     }
 
+    /// <summary>
+    /// Player has left event
+    /// </summary>
+    /// <param name="info">PlayerInput of player that has left</param>
     public void PlayerLeft(PlayerInput info)
     {
         if (info.playerIndex <= 3 && info.playerIndex >= 0)
@@ -51,9 +67,11 @@ public class Menu : MonoBehaviour
             icons[info.playerIndex].Leave();
             players[info.playerIndex] = null;
         }
-        Debug.Log(info.playerIndex);
     }
 
+    /// <summary>
+    /// Attempt to start the game
+    /// </summary>
     public void AttemptStart()
     {
         if (!StartCheck())
@@ -67,16 +85,13 @@ public class Menu : MonoBehaviour
             }
         }
         GameData.player_count = playerInputManager.playerCount;
-        Debug.Log("STARTING");        
-        
-        for(int i = 0;i < 4;i ++)
-            if (GameData.devices[i] != null)
-                Debug.Log(GameData.devices[i]);
-        Debug.Log(GameData.player_count);
-
         SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
     }
 
+    /// <summary>
+    /// Condition check if players can start
+    /// </summary>
+    /// <returns>Bool if game can be started</returns>
     private bool StartCheck()
     {
         return playerInputManager.playerCount >= 2;
