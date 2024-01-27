@@ -24,13 +24,13 @@ public class PlayerIndicatorScript : MonoBehaviour
     {
         _player = owner;
 
-        Color playerColor = _player.transform.GetComponent<Renderer>().material.color;
+        Color playerColor = _player.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
         transform.GetComponent<Image>().color = playerColor;
     }
 
     private void Update()
     {
-        Vector2 playerScreenPos = _camera.WorldToScreenPoint(_player.transform.position);
+        Vector2 playerScreenPos = _camera.WorldToScreenPoint(_player.transform.position + new Vector3(0,1.7f,0));
         transform.position = playerScreenPos + offset;
     }
 }
