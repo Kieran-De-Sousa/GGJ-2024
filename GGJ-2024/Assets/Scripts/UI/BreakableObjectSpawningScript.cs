@@ -28,6 +28,5 @@ public class BreakableObjectSpawningScript : MonoBehaviour
         float spawnForce = Random.Range(spawnForceRange.x, spawnForceRange.y);
         
         newObject.GetComponent<Rigidbody>().AddForce(dirToZero * spawnForce, ForceMode.Impulse);
-        Debug.Log(spawnForce);
     }
 }
