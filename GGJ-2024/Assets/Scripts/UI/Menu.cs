@@ -59,6 +59,19 @@ public class Menu : MonoBehaviour
         Debug.Log(selected_button);
     }
 
+    private void Start()
+    {
+        Invoke(nameof(StartMusic), 0.25f);
+    }
+
+    private void StartMusic()
+    {
+        MusicPlaySettings musicPlaySettings = MusicPlaySettings.Default;
+        musicPlaySettings.AudioPlaySettings.Volume = 0.25f;
+
+        MusicManager.Instance.PlayMusicGroup(AudioGroupID.MainMenuTracks, musicPlaySettings);
+    }
+
     /// <summary>
     /// UI reference to play button
     /// </summary>
