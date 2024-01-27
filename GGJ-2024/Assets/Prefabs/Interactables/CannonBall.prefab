@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3340144439969217822}
   - component: {fileID: 2059262643028683716}
   - component: {fileID: 7649378719485833496}
+  - component: {fileID: 8764068293379697598}
+  - component: {fileID: 7226911502576602452}
   m_Layer: 0
   m_Name: CannonBall
   m_TagString: Untagged
@@ -77,6 +79,42 @@ SphereCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8764068293379697598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070435115879317527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comedyTriggered: 0
+  comedyAmount: 5
+  comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
+--- !u!135 &7226911502576602452
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070435115879317527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

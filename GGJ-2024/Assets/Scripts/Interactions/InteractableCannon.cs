@@ -7,6 +7,7 @@ public class InteractableCannon : Interactable
 
     public GameObject ammo;
     public Transform barrel;
+    public float ammoLifespan;
 
     public float force;
     public float cooldown;
@@ -30,5 +31,7 @@ public class InteractableCannon : Interactable
         // TODO: Add cooldown timer
         GameObject cannonBall = Instantiate(ammo, barrel.position, barrel.rotation);
         cannonBall.GetComponent<Rigidbody>().velocity = barrel.forward * force * Time.deltaTime;
+
+        Destroy(cannonBall, ammoLifespan);
     }
 }
