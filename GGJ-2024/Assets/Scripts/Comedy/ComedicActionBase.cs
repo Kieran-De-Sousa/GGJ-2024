@@ -32,4 +32,13 @@ public abstract class ComedicActionBase : MonoBehaviour
             comedyEvent.Raise(this, comedyAmount);
         }
     }
+
+    public virtual void ComedyTriggered(Collider collider)
+    {
+        if (!comedyTriggered)
+        {
+            comedyTriggered = true;
+            comedyEvent.Raise(this, comedyAmount);
+        }
+    }
 }

@@ -43,6 +43,12 @@ public class Ragdoll : MonoBehaviour
         }
     }
 
+    public void ToggleRagdollAndCoroutine(bool bIsRagdoll)
+    {
+        ToggleRagdoll(bIsRagdoll);
+        StartCoroutine(GetBackUp());
+    }
+
     private IEnumerator GetBackUp()
     {
         yield return new WaitForSeconds(respawnTime);
@@ -62,6 +68,15 @@ public class Ragdoll : MonoBehaviour
         else
         {
             //animator.SetTrigger("Idle");
+        }
+    }
+
+    public void OnRagdollEvent(Component sender, object data)
+    {
+        Collider temp = (Collider) data;
+        if (temp.gameObject == this.gameObject)
+        {
+            ToggleRagdollAndCoroutine(true);
         }
     }
 }
