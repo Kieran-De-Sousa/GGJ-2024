@@ -13,13 +13,19 @@ public class TestPlayerScript : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        CinemachineTargetGroup targets = FindObjectOfType<CinemachineTargetGroup>();
+        CinemachineTargetGroup targets;
+        if (TryGetComponent(out targets))
+            UpdateTargetGroup(targets);
+    }
+
+    private void UpdateTargetGroup(CinemachineTargetGroup group)
+    {
         for (int i = 0; i < 4; i++)
         {
-            if (targets.m_Targets[i].target == null)
+            if (group.m_Targets[i].target == null)
             {
-                targets.m_Targets[i].target = transform;
-                break;
+                group.m_Targets[i].target = transform;
+                return;
             }
         }
     }
@@ -31,6 +37,6 @@ public class TestPlayerScript : MonoBehaviour
 
     public void Update()
     {
-        rb.velocity = new Vector3(move_vec.x * move_speed, Mathf.Clamp(rb.velocity.y, -5, 5), move_vec.y * move_speed);
+        rb.velocity = new Vector3(move_vec.x * move_speed, Mathf.Clamp(rb.velocity.y, -10, 10), move_vec.y * move_speed);
     }
 }
