@@ -151,6 +151,7 @@ public class Menu : MonoBehaviour
         }
         GameData.player_count = playerInputManager.playerCount;
         SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
+        ScoreManager.Instance.ClearAllScores();
     }
 
     /// <summary>

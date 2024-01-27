@@ -6,6 +6,7 @@ using UnityEngine;
 public class ComedicActionHit : ComedicActionBase
 {
     [SerializeField] protected GameEvent ragdollEvent = null;
+    public TestPlayerScript Initiator { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class ComedicActionHit : ComedicActionBase
         if (!comedyTriggered)
         {
             comedyTriggered = true;
-            comedyEvent.Raise(this, comedyAmount);
+            comedyEvent.Raise(Initiator, comedyAmount);
             ragdollEvent.Raise(this, collider);
 
             PlayAudio();

@@ -24,18 +24,17 @@ public class InteractableCannon : Interactable
         
     }
 
-    public override void Interact()
+    public override void Interact(TestPlayerScript initiator)
     {
         Debug.Log("Cannon Fired");
 
         // TODO: Add cooldown timer
         GameObject cannonBall = Instantiate(ammo, barrel.position, barrel.rotation);
         cannonBall.GetComponent<Rigidbody>().velocity = barrel.forward * force * Time.deltaTime;
-
+        cannonBall.GetComponent<ComedicActionHit>().Initiator = initiator;
         AudioPlaySettings playSettings = AudioPlaySettings.Default;
         playSettings.Position = transform.position;
         AudioManager.Instance.PlayEffect(AudioID.CannonFire, AudioMixerID.SFX, playSettings);
-
         Destroy(cannonBall, ammoLifespan);
     }
 }
