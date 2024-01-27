@@ -9,7 +9,7 @@ public class InstantRagdoll : MonoBehaviour
     private void Start()
     {
         ragdoll = GetComponent<Ragdoll>().transform;
-        FindObjectOfType<Ragdoll>().ToggleRagdoll(true);
+        GetComponent<Ragdoll>().ToggleRagdoll(true);
     }
 
     private void Update()

@@ -32,7 +32,7 @@ public class PlayerIndicatorScript : MonoBehaviour
     {
         if (!_player)
             Destroy(gameObject);
-        Vector2 playerScreenPos = _camera.WorldToScreenPoint(_player.transform.position + new Vector3(0,1.7f,0));
+        Vector2 playerScreenPos = _camera.WorldToScreenPoint(_player.transform.GetChild(0).GetChild(0).position + new Vector3(0,1.7f,0));
         transform.position = playerScreenPos + offset;
     }
 }
