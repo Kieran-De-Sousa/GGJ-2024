@@ -124,6 +124,7 @@ MonoBehaviour:
   health: 100
   maxVelocityToDamage: 100
   maxDamagetaken: 150
+  lifeSpanInSeconds: 30
 --- !u!54 &-5412713402926749823
 Rigidbody:
   m_ObjectHideFlags: 0

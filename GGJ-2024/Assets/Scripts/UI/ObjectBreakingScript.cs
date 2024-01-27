@@ -15,6 +15,8 @@ public class ObjectBreakingScript : MonoBehaviour
     public float maxVelocityToDamage = 100;
     public float maxDamagetaken = 150;
 
+    public float lifeSpanInSeconds = 30;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -53,8 +55,8 @@ public class ObjectBreakingScript : MonoBehaviour
         _velocity = _rigidbody.velocity.magnitude;
         
         //should be removed
-        health -= 2 * Time.deltaTime;
-        if (health <= 0)
+        lifeSpanInSeconds -= 1 * Time.deltaTime;
+        if (lifeSpanInSeconds <= 0)
         {
             Destroy(gameObject);
         }
