@@ -12,7 +12,7 @@ public class PlayerUIScript : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Renderer>().material.color = playerColor;
+        GetComponentInChildren<Renderer>().material.color = playerColor;
         
         _indicator = Instantiate(indicatorPrefab, transform.position, Quaternion.identity);
         _indicator.GetComponent<PlayerIndicatorScript>().SetOwner(transform.gameObject);

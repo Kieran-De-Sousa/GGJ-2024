@@ -35,7 +35,7 @@ public class TimerScript : MonoBehaviour
             
             SetString(timeMinutes, timeSeconds);
             
-            _gameController.GetComponent<BreakableObjectSpawningScript>().SpawnObject(timer);
+            _gameController?.GetComponent<BreakableObjectSpawningScript>()?.SpawnObject(timer);
         }
     }
 
