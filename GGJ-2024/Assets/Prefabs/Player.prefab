@@ -1191,6 +1191,7 @@ GameObject:
   - component: {fileID: 2458196284745038452}
   - component: {fileID: 1093706958411379905}
   - component: {fileID: 4035987114835424745}
+  - component: {fileID: -4811642778800545393}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1388,6 +1389,34 @@ MonoBehaviour:
   indicatorPrefab: {fileID: 1831355813407276141, guid: 6aabf92e5a2ae574c83713985eed9cc3,
     type: 3}
   playerColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &-4811642778800545393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782702501690864755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad7a04b80700624281a8b6633667427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5389341579569047438}
+        m_TargetAssemblyTypeName: Ragdoll, Assembly-CSharp
+        m_MethodName: OnRagdollEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1789272960074739661
 GameObject:
   m_ObjectHideFlags: 0

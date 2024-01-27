@@ -64,4 +64,9 @@ public class Ragdoll : MonoBehaviour
             //animator.SetTrigger("Idle");
         }
     }
+
+    public void OnRagdollEvent(Component sender, object data)
+    {
+        ToggleRagdoll(true);
+    }
 }
