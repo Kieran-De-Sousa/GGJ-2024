@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ComedicActionHit : ComedicActionBase
 {
+    [SerializeField] protected GameEvent ragdollEvent = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,16 @@ public class ComedicActionHit : ComedicActionBase
         {
             Debug.Log("Comedy Event Raised!");
             ComedyTriggered();
+        }
+    }
+
+    public override void ComedyTriggered()
+    {
+        if (!comedyTriggered)
+        {
+            comedyTriggered = true;
+            comedyEvent.Raise(this, comedyAmount);
+            ragdollEvent.Raise(this, 0);
         }
     }
 }
