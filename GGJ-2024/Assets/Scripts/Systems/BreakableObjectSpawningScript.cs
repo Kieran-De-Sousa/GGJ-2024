@@ -11,15 +11,15 @@ public class BreakableObjectSpawningScript : MonoBehaviour
 
     public float spawnHeight = 25;
     public float spawnRadius = 70;
-    public Vector2 spawnForceRange = new Vector2(30, 70);
+    public Vector2 spawnForceRange = new Vector2(40, 70);
     
     public void SpawnObject(int timer)
     {
         float angle = (timer % 60) * 360;
         
         Vector3 spawnPoint = new Vector3(spawnRadius * Mathf.Cos(angle), spawnHeight, spawnRadius * Mathf.Sin(angle));
-
-        GameObject newObject = Instantiate(breakableObjectPrefab, transform.position, Quaternion.identity);
+        
+        GameObject newObject = GetComponent<BreakableObjectPoolScript>().GetObjectFromPool();
         newObject.transform.position = spawnPoint;
 
         Vector3 dirToZero = new Vector3(0, 0, 0) - newObject.transform.position;

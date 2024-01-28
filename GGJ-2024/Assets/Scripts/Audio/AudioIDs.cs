@@ -11,4 +11,9 @@ public enum AudioID : uint
     CannonFire,
     Slapped,
     Ragdoll,
+    TomatoSplat,
+    KingLaugh01,
+    AudienceLaughter01,
+    AudienceLaughter02,
+    YouWin,
 }

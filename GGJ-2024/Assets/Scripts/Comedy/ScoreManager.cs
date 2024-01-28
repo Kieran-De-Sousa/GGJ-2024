@@ -54,8 +54,21 @@ public class ScoreManager : Singleton<ScoreManager>
         Debug.Log($"Adding {score} score for player id {playerId}. Total score is now {playerScoreInfo.PlayerScore}.");
     }
 
-    public ScoreInfo GetHighestScore() => _playerScores.OrderBy(p => p.PlayerScore).FirstOrDefault();
-    public ScoreInfo GetScoreInfo(int playerId) => _playerScores.Where(p => p.PlayerId == playerId).FirstOrDefault();
+    public ScoreInfo GetHighestScore() => _playerScores.OrderBy(p => p.PlayerScore).LastOrDefault();
+    public ScoreInfo GetScoreInfo(int playerId)
+    {
+        ScoreInfo info = _playerScores.Where(p => p.PlayerId == playerId).FirstOrDefault();
+        if (info == null)
+        {
+            info = new ScoreInfo
+            {
+                PlayerId = playerId,
+                PlayerScore = 0
+            };
+            _playerScores.Add(info);
+        }
+        return info;
+    }
     public ScoreInfo GetScoreInfo(TestPlayerScript playerScript) => GetScoreInfo(playerScript.PlayerIndex);
     public void ClearAllScores() => _playerScores = new();
 

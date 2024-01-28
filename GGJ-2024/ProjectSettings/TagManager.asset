@@ -7,7 +7,7 @@ TagManager:
   - Canvas
   - Timer
   - Ground
-  - Object
+  - Box
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,6 @@ public class TestPlayerScript : MonoBehaviour
     [Header("Slapping")]
     public Collider slapHitbox;
     public float slapForce = 100;
-    public ComedicActionHit slapData;
     private bool slapped = false;
 
     [SerializeField] private Slap _slap;
@@ -81,10 +80,10 @@ public class TestPlayerScript : MonoBehaviour
         {
             GetComponent<Animator>().SetTrigger("Slap");
 
-            slapHitbox.gameObject.SetActive(true);
+            slapped = true;
             slapHitbox.enabled = true;
 
-            Debug.Log($"Slapped = {slapHitbox.gameObject.activeSelf}");
+            Debug.Log($"Slapped Hitbox = {slapHitbox.enabled}");
 
             StopAllCoroutines();
             StartCoroutine(SlapHitboxTime());
@@ -137,13 +136,11 @@ public class TestPlayerScript : MonoBehaviour
 
     IEnumerator SlapHitboxTime()
     {
-        slapped = true;
         yield return new WaitForSeconds(1.0f);
 
         slapped = false;
-        slapHitbox.gameObject.SetActive(false);
         slapHitbox.enabled = false;
-        Debug.Log($"Slapped = {slapHitbox.gameObject.activeSelf}");
+        Debug.Log($"Slapped Hitbox = {slapHitbox.enabled}");
     }
 
     public void Update()

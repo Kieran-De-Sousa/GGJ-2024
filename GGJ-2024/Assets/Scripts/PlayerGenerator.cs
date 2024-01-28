@@ -27,16 +27,4 @@ public class PlayerGenerator : MonoBehaviour
             pl.GetComponent<PlayerUIScript>().AwakeUI(i);
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("o"))
-        {
-            SceneManager.LoadScene("WinScreen", LoadSceneMode.Single);
-        }
-        else if (Input.GetKeyDown("p"))
-        {
-            SceneManager.LoadScene("LoseScreen", LoadSceneMode.Single);
-        }
-    }
 }

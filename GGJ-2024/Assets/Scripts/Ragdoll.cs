@@ -17,6 +17,10 @@ public class Ragdoll : MonoBehaviour
 
     public Animator playerAnimator;
 
+    public GameObject cartoonEffect;
+
+    private bool isRagdolling = false;
+
     void Awake()
     {
         childColliders = new List<Collider>();
@@ -39,6 +43,8 @@ public class Ragdoll : MonoBehaviour
 
     public void ToggleRagdoll(bool bIsRagdoll)
     {
+        if (bIsRagdoll)
+            Instantiate(cartoonEffect, transform.position, Quaternion.identity);
         isRagdolling = bIsRagdoll;
         GetComponent<Animator>().enabled = !bIsRagdoll;
         myRigidbody.useGravity = !bIsRagdoll;
