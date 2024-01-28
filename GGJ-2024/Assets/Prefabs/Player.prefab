@@ -1256,6 +1256,8 @@ MonoBehaviour:
   rootObject: {fileID: 8321745705471127050}
   respawnTime: 5
   playerAnimator: {fileID: 4540229000190281644}
+  cartoonEffect: {fileID: 4393291526820241302, guid: 348a163ddd19dd94b8e4a685dc9a4729,
+    type: 3}
 --- !u!65 &2373803712623939273
 BoxCollider:
   m_ObjectHideFlags: 0
