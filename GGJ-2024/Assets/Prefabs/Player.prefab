@@ -1288,7 +1288,8 @@ MonoBehaviour:
   myRigidbody: {fileID: 582064200327705307}
   grabCollider: {fileID: 5137363073523261435}
   rootObject: {fileID: 8321745705471127050}
-  respawnTime: 2
+  respawnTime: 1
+  isRagdolling: 0
   playerAnimator: {fileID: 4540229000190281644}
   cartoonEffect: {fileID: 4393291526820241302, guid: 348a163ddd19dd94b8e4a685dc9a4729,
     type: 3}
@@ -1470,6 +1471,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 57cf2700-815c-48cc-ac61-685fc3717a88
     m_ActionName: Gameplay/Throw[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3794739038336310944}
+        m_TargetAssemblyTypeName: OutOfBounds, Assembly-CSharp
+        m_MethodName: RespawnPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8d04f239-8c8e-4cd0-837a-04adb8ac2393
+    m_ActionName: Gameplay/Respawn[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth,/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

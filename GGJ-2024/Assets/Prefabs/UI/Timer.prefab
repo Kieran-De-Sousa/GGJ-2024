@@ -151,4 +151,4 @@ MonoBehaviour:
   timeSeconds: 0
   timer: 0
   eventTimer: 5
-  eventTimerRange: {x: 1, y: 10}
+  eventTimerRange: {x: 5, y: 15}

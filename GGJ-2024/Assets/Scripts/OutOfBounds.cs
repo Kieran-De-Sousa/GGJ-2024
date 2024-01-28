@@ -49,10 +49,9 @@ public class OutOfBounds : MonoBehaviour
         }
     }
 
-    private void RespawnPlayer()
+    public void RespawnPlayer()
     {
-        ragdollScript.ToggleRagdoll(false);
+        //ragdollScript.ToggleRagdoll(false);
         transform.position = playerGeneratorScript.spawn_points[input.playerIndex];
-        Debug.Log("respawn");
     }
 }

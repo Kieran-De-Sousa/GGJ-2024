@@ -119,7 +119,7 @@ public class TestPlayerScript : MonoBehaviour
         if (holdingObject) 
         {
             LostGrabbable();
-            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0f, 0f, 100f);
+            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 100f;
         }
     }
 
@@ -173,7 +173,11 @@ public class TestPlayerScript : MonoBehaviour
             if (rotationAngle != 0)
             {
                 transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f) * Quaternion.identity;
-            }   
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, transform.localEulerAngles.y, 0) * Quaternion.identity;
+            }
         }
 
         if (ragdollScript.isRagdolling && holdingObject)
