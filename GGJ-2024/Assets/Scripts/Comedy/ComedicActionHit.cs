@@ -9,20 +9,19 @@ public class ComedicActionHit : ComedicActionBase
 {
     [SerializeField] protected GameEvent ragdollEvent = null;
     public TestPlayerScript Initiator { get; set; }
-    private Collider _collider;
 
     // Start is called before the first frame update
     void Start()
     {
-        Collider[] parentColliders = transform.parent.GetComponentsInChildren<Collider>();
-        Collider thisCollider = this.GetComponent<Collider>();
-
-        _collider = thisCollider;
-
-        foreach (Collider parentCollider in parentColliders)
-        {
-            Physics.IgnoreCollision(thisCollider, parentCollider);
-        }
+        // Collider[] parentColliders = transform.parent.GetComponentsInChildren<Collider>();
+        // Collider thisCollider = this.GetComponent<Collider>();
+        //
+        // _collider = thisCollider;
+        //
+        // foreach (Collider parentCollider in parentColliders)
+        // {
+        //     Physics.IgnoreCollision(thisCollider, parentCollider);
+        // }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,16 +35,6 @@ public class ComedicActionHit : ComedicActionBase
 
     private void OnCollisionEnter(Collision other)
     {
-
-        // Find the Collider component in the current GameObject and its children
-        Collider ownCollider = GetComponentInChildren<Collider>();
-
-        if (ownCollider != null && !ownCollider.enabled)
-        {
-            // If the collider is not enabled, return without further processing
-            return;
-        }
-
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Comedy Event Raised!");

@@ -1005,6 +1005,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 6164632258498836847, guid: 40087f1fbe48b2045801c3f4f47963bc,
+        type: 3}
+      propertyPath: timeMinutes
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164632258498836847, guid: 40087f1fbe48b2045801c3f4f47963bc,
+        type: 3}
+      propertyPath: eventTimerRange.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2747,7 +2757,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cd5a6facd5a90c1448aee818d238062e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2918,12 +2928,17 @@ PrefabInstance:
     - target: {fileID: 8449516302193071902, guid: cf395423f2a58224994c78b6c409e790,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8449516302193071902, guid: cf395423f2a58224994c78b6c409e790,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8449516302193071902, guid: cf395423f2a58224994c78b6c409e790,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8449516302193071902, guid: cf395423f2a58224994c78b6c409e790,
         type: 3}
@@ -2968,7 +2983,7 @@ PrefabInstance:
     - target: {fileID: 8449516302193071902, guid: cf395423f2a58224994c78b6c409e790,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -118.3
+      value: -145.26
       objectReference: {fileID: 0}
     - target: {fileID: 8449516302193071902, guid: cf395423f2a58224994c78b6c409e790,
         type: 3}

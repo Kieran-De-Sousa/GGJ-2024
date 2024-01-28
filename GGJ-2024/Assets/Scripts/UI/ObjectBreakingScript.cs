@@ -31,7 +31,7 @@ public class ObjectBreakingScript : MonoBehaviour
         healthMax = health;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
@@ -41,7 +41,7 @@ public class ObjectBreakingScript : MonoBehaviour
         Damage(other);
     }
 
-    private void Damage(Collision other)
+    private void Damage(Collider other)
     {
         var otherRigidBody = other.transform.GetComponent<Rigidbody>();
         if (_velocity >= 10 || (otherRigidBody != null && otherRigidBody.velocity.magnitude >= 10))
@@ -51,7 +51,6 @@ public class ObjectBreakingScript : MonoBehaviour
             {
                 damage = maxDamagetaken;
             }
-            Debug.Log(damage);
 
             health -= damage;
             
@@ -85,6 +84,7 @@ public class ObjectBreakingScript : MonoBehaviour
     {
         lifeSpanInSeconds = lifeSpanInSecondsMax;
         health = healthMax;
+        _rigidbody.velocity = Vector3.zero;
         _gameController.GetComponent<BreakableObjectPoolScript>().ReturnObjectToPool(gameObject);
     }
 }
