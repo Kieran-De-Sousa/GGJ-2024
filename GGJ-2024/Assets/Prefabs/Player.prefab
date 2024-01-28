@@ -1288,7 +1288,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 582064200327705307}
   grabCollider: {fileID: 5137363073523261435}
   rootObject: {fileID: 8321745705471127050}
-  respawnTime: 5
+  respawnTime: 2
   isRagdolling: 0
   playerAnimator: {fileID: 4540229000190281644}
   cartoonEffect: {fileID: 4393291526820241302, guid: 348a163ddd19dd94b8e4a685dc9a4729,
@@ -1457,13 +1457,13 @@ MonoBehaviour:
     m_ActionName: Gameplay/Grab[/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1782702501690864755}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1093706958411379905}
+        m_TargetAssemblyTypeName: TestPlayerScript, Assembly-CSharp
+        m_MethodName: Throw
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1492,8 +1492,6 @@ MonoBehaviour:
   rotate_speed: 0
   slapHitbox: {fileID: 2920679272552374031}
   slapForce: 100
-  slapData: {fileID: 0}
-  slappp: {fileID: 9139437360885777050}
   _slap: {fileID: 0}
 --- !u!114 &4035987114835424745
 MonoBehaviour:

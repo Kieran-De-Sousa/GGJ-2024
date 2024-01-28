@@ -20,7 +20,7 @@ public class OutOfBounds : MonoBehaviour
         allChildTransforms = new List<Transform>();
         foreach (Transform t in allTransforms) 
         {
-            if (t != transform)
+            if (t != transform || t.gameObject.tag == "box")
             {
                 allChildTransforms.Add(t);
             }
@@ -34,17 +34,17 @@ public class OutOfBounds : MonoBehaviour
         {
             if (transform.position.y < -1.3 || transform.position.y > 15.2)
             {
-                RespawnPlayer();
+                //RespawnPlayer();
             }
 
             if (transform.position.x < - 21 ||  transform.position.x > 21)
             {
-                RespawnPlayer();
+                //RespawnPlayer();
             }
 
             if (transform.position.z < -10.2 || transform.position.z > 10.2)
             {
-                RespawnPlayer();
+                //RespawnPlayer();
             }
         }
     }

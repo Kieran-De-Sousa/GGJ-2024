@@ -23,6 +23,7 @@ public class TestPlayerScript : MonoBehaviour
     private Vector2 rotate_vec;
     private Ragdoll ragdollScript;
     private Collider grabbableCollider = null;
+    private Collider currentGrabbable = null;
     private bool holdingObject = false;
 
     private void Start()
@@ -94,30 +95,49 @@ public class TestPlayerScript : MonoBehaviour
     {
         if(!holdingObject && grabbableCollider != null)
         {
+            currentGrabbable = grabbableCollider;
             holdingObject = true;
-            grabbableCollider.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            grabbableCollider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            grabbableCollider.gameObject.transform.parent = transform;
-            grabbableCollider.gameObject.transform.position =
+            currentGrabbable.gameObject.GetComponent<Rigidbody>().useGravity = false;
+            currentGrabbable.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            currentGrabbable.gameObject.transform.rotation = Quaternion.Euler(0,0,0);
+            if (currentGrabbable.gameObject.tag == "Player")
+            {
+                currentGrabbable.gameObject.GetComponent<Ragdoll>().ToggleRagdoll(true);
+            }
+            currentGrabbable.gameObject.transform.parent = transform;
+            currentGrabbable.gameObject.transform.position =
                 new Vector3(
                     transform.position.x,
                     transform.position.y + (3 * (ragdollScript.myCollider.bounds.size.y/4)),
-                    transform.position.z + (ragdollScript.myCollider.bounds.size.z / 2) + (grabbableCollider.bounds.size.z / 2)
+                    transform.position.z + (ragdollScript.myCollider.bounds.size.z / 2) + (currentGrabbable.bounds.size.z / 2)
                     );
+        }
+    }
+
+    public void Throw(InputAction.CallbackContext info)
+    {
+        if (holdingObject) 
+        {
+            LostGrabbable();
+            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0f, 0f, 100f);
         }
     }
 
     private void LostGrabbable()
     {
-        grabbableCollider.gameObject.GetComponent<Rigidbody>().useGravity = true;
-        grabbableCollider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        grabbableCollider.gameObject.transform.parent = null;
+        currentGrabbable.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        currentGrabbable.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        currentGrabbable.gameObject.transform.parent = null;
         holdingObject = false;
+        if (currentGrabbable.gameObject.tag == "Player")
+        {
+            currentGrabbable.gameObject.GetComponent<Ragdoll>().ToggleRagdollAndCoroutine(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Object" || other.tag == "Player")
+        if (other.tag == "Box" || other.tag == "Player")
         {
             if (!holdingObject)
             {
@@ -128,7 +148,7 @@ public class TestPlayerScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Object" || other.tag == "Player")
+        if (other.tag == "Box" || other.tag == "Player")
         {
             grabbableCollider = null;
         }
