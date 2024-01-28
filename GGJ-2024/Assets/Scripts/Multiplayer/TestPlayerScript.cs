@@ -23,6 +23,9 @@ public class TestPlayerScript : MonoBehaviour
     private Rigidbody rb;
     private Vector2 rotate_vec;
     private Ragdoll ragdollScript;
+    private Collider grabbableCollider = null;
+    private bool holdingObject = false;
+    private float rotationAngle = 0;
 
     private void Start()
     {
@@ -63,6 +66,7 @@ public class TestPlayerScript : MonoBehaviour
     public void Rotate(InputAction.CallbackContext info)
     {
         rotate_vec = info.ReadValue<Vector2>();
+        //Debug.Log(rotate_vec);
     }
 
     public void Slap(InputAction.CallbackContext info)
@@ -88,6 +92,50 @@ public class TestPlayerScript : MonoBehaviour
         }
     }
 
+    public void Grab(InputAction.CallbackContext info)
+    {
+        if(!holdingObject && grabbableCollider != null)
+        {
+            holdingObject = true;
+            grabbableCollider.gameObject.GetComponent<Rigidbody>().useGravity = false;
+            grabbableCollider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            grabbableCollider.gameObject.transform.parent = transform;
+            grabbableCollider.gameObject.transform.position =
+                new Vector3(
+                    transform.position.x,
+                    transform.position.y + (3 * (ragdollScript.myCollider.bounds.size.y/4)),
+                    transform.position.z + (ragdollScript.myCollider.bounds.size.z / 2) + (grabbableCollider.bounds.size.z / 2)
+                    );
+        }
+    }
+
+    private void LostGrabbable()
+    {
+        grabbableCollider.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        grabbableCollider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        grabbableCollider.gameObject.transform.parent = null;
+        holdingObject = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Object" || other.tag == "Player")
+        {
+            if (!holdingObject)
+            {
+                grabbableCollider = other;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Object" || other.tag == "Player")
+        {
+            grabbableCollider = null;
+        }
+    }
+
     IEnumerator SlapHitboxTime()
     {
         slapped = true;
@@ -101,14 +149,20 @@ public class TestPlayerScript : MonoBehaviour
 
     public void Update()
     {
-        //Debug.Log(rotate_vec);
         if (!ragdollScript.isRagdolling)
         {
             rb.velocity = new Vector3(move_vec.x * move_speed, Mathf.Clamp(rb.velocity.y, -10, 10), move_vec.y * move_speed);
 
             float rotationAngle = Mathf.Atan2(rotate_vec.x, rotate_vec.y) * Mathf.Rad2Deg;
-            //Debug.Log(rotationAngle);
-            transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f) * Quaternion.identity;
+            if (rotationAngle != 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f) * Quaternion.identity;
+            }   
+        }
+
+        if (ragdollScript.isRagdolling && holdingObject)
+        {
+            LostGrabbable();
         }
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5412713402926749823}
   m_Layer: 0
   m_Name: Breakable Object
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

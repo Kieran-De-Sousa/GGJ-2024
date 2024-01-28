@@ -136,6 +136,37 @@ Transform:
   - {fileID: 6870399382399910017}
   m_Father: {fileID: 4645950032517277686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &184586355660065929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8882312202426061624}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8882312202426061624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184586355660065929}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.037, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1438546959266459337}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185160433139728343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1223,8 @@ GameObject:
   - component: {fileID: 1093706958411379905}
   - component: {fileID: 4035987114835424745}
   - component: {fileID: -4811642778800545393}
-  - component: {fileID: 5686123125649068069}
+  - component: {fileID: 3794739038336310944}
+  - component: {fileID: 5137363073523261435}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1216,6 +1248,7 @@ Transform:
   - {fileID: 8018214403497295447}
   - {fileID: 2339865049046370806}
   - {fileID: 1349988991}
+  - {fileID: 8882312202426061624}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4540229000190281644
@@ -1253,9 +1286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myCollider: {fileID: 2373803712623939273}
   myRigidbody: {fileID: 582064200327705307}
+  grabCollider: {fileID: 5137363073523261435}
   rootObject: {fileID: 8321745705471127050}
-  isRagdolling: 0
   respawnTime: 5
+  isRagdolling: 0
   playerAnimator: {fileID: 4540229000190281644}
 --- !u!65 &2373803712623939273
 BoxCollider:
@@ -1387,6 +1421,54 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 78a2d3ee-6731-45aa-885c-d911d9fda71e
     m_ActionName: Ragdoll/Spawn[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1093706958411379905}
+        m_TargetAssemblyTypeName: TestPlayerScript, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ac1617ce-3657-4d05-b81e-e24b1b05cf12
+    m_ActionName: Gameplay/Rotate[/XInputControllerWindows/rightStick,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1093706958411379905}
+        m_TargetAssemblyTypeName: TestPlayerScript, Assembly-CSharp
+        m_MethodName: Grab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 060e20c3-50dd-4e84-a219-35141eb42bd6
+    m_ActionName: Gameplay/Grab[/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1782702501690864755}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 57cf2700-815c-48cc-ac61-685fc3717a88
+    m_ActionName: Gameplay/Throw[/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1405,6 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 5
+  rotate_speed: 0
   slapHitbox: {fileID: 2920679272552374031}
   slapForce: 100
   slapData: {fileID: 1981096385362705583}
@@ -1456,22 +1539,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5686123125649068069
+--- !u!114 &3794739038336310944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782702501690864755}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6621e0e17c5b67b43a69e664f693a830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comedyTriggered: 0
-  comedyAmount: 3
-  comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
-  ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
+--- !u!65 &5137363073523261435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782702501690864755}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0.5}
 --- !u!1 &1789272960074739661
 GameObject:
   m_ObjectHideFlags: 0
