@@ -119,7 +119,7 @@ public class TestPlayerScript : MonoBehaviour
         if (holdingObject) 
         {
             LostGrabbable();
-            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 100f;
+            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 50;
         }
     }
 
