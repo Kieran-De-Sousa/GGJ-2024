@@ -27,6 +27,8 @@ public class GenerateWinner : MonoBehaviour
     private void PlayAudio()
     {
         AudioPlaySettings playSettings = AudioPlaySettings.Default;
+        playSettings.Volume = 100f;
+        playSettings.Loop = true;
         playSettings.Position = transform.position;
         AudioManager.Instance.PlayEffect(AudioID.YouWin, AudioMixerID.SFX, playSettings);
     }
