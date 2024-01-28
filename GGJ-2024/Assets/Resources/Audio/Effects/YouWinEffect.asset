@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bcbf8ecf35bf041917920aeb195275, type: 3}
   m_Name: YouWinEffect
   m_EditorClassIdentifier: 
-  ID: 0
-  Clip: {fileID: 0}
+  ID: 10
+  Clip: {fileID: 8300000, guid: a1e2f439300cc60428ef44cfa980bc55, type: 3}
