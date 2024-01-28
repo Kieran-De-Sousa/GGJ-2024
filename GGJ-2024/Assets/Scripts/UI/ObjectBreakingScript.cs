@@ -11,41 +11,58 @@ public class ObjectBreakingScript : MonoBehaviour
     private float _velocity;
 
     public float health = 100;
+    private float healthMax;
 
     public float maxVelocityToDamage = 100;
     public float maxDamagetaken = 150;
 
     public float lifeSpanInSeconds = 30;
+    private float lifeSpanInSecondsMax;
 
+    private GameObject _gameController;
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
+        _gameController = GameObject.FindGameObjectWithTag("GameController");
+        
+        lifeSpanInSecondsMax = lifeSpanInSeconds;
+        healthMax = health;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        Damage();
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            //return;
+        }
+        
+        Damage(other);
     }
 
-    private void Damage()
+    private void Damage(Collision other)
     {
-        if (_velocity >= 10)
+        var otherRigidBody = other.transform.GetComponent<Rigidbody>();
+        if (_velocity >= 10 || (otherRigidBody != null && otherRigidBody.velocity.magnitude >= 10))
         {
             float damage = (_velocity / maxVelocityToDamage) * maxDamagetaken;
             if ( damage > maxDamagetaken)
             {
                 damage = maxDamagetaken;
             }
+            Debug.Log(damage);
 
             health -= damage;
             
             if (health <= 0)
             {
-                Destroy(gameObject);
+                DeleteObject();
                 
                 GameObject particle = Instantiate(objectBreakingParticle, transform.position, Quaternion.identity);
                 Quaternion rotation = Quaternion.Euler(-90, 0, 0);
                 particle.transform.rotation = rotation;
+                particle.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
             }
         }
     }
@@ -53,12 +70,21 @@ public class ObjectBreakingScript : MonoBehaviour
     private void Update()
     {
         _velocity = _rigidbody.velocity.magnitude;
-        
-        //should be removed
+    }
+
+    private void LateUpdate()
+    {
         lifeSpanInSeconds -= 1 * Time.deltaTime;
         if (lifeSpanInSeconds <= 0)
         {
-            Destroy(gameObject);
+            DeleteObject();
         }
+    }
+
+    private void DeleteObject()
+    {
+        lifeSpanInSeconds = lifeSpanInSecondsMax;
+        health = healthMax;
+        _gameController.GetComponent<BreakableObjectPoolScript>().ReturnObjectToPool(gameObject);
     }
 }

@@ -24,7 +24,6 @@ public class FunnyEventsControllerScript : MonoBehaviour
     {
         int randomInt = Random.Range(0, prefabs.Length);
         GameObject newPrefab = prefabs[randomInt];
-        Debug.Log(Random.Range(0, prefabs.Length));
         return newPrefab;
     }
 
