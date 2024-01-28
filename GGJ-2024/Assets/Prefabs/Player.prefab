@@ -1192,7 +1192,6 @@ GameObject:
   - component: {fileID: 1093706958411379905}
   - component: {fileID: 4035987114835424745}
   - component: {fileID: -4811642778800545393}
-  - component: {fileID: 5686123125649068069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1406,8 +1405,9 @@ MonoBehaviour:
   move_speed: 5
   slapHitbox: {fileID: 2920679272552374031}
   slapForce: 100
-  slapData: {fileID: 1981096385362705583}
-  _slap: {fileID: 612682318890500554}
+  slapData: {fileID: 0}
+  slappp: {fileID: 9139437360885777050}
+  _slap: {fileID: 0}
 --- !u!114 &4035987114835424745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,22 +1455,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5686123125649068069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782702501690864755}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comedyTriggered: 0
-  comedyAmount: 3
-  comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
-  ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
 --- !u!1 &1789272960074739661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,15 +3671,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8249444357049296793}
   - component: {fileID: 2920679272552374031}
-  - component: {fileID: 1981096385362705583}
-  - component: {fileID: 612682318890500554}
+  - component: {fileID: 9139437360885777050}
+  - component: {fileID: 5360708326319233286}
   m_Layer: 0
   m_Name: SlapHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8249444357049296793
 Transform:
   m_ObjectHideFlags: 0
@@ -3727,14 +3711,14 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.13
-  m_Height: 0.66
+  m_Radius: 0.33
+  m_Height: 1.73
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1981096385362705583
+--- !u!114 &9139437360885777050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3743,28 +3727,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 4936750740863209033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e7ad5bc0fe9d894f8644766d66b0af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   comedyTriggered: 0
   comedyAmount: 2
   comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
   ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
---- !u!114 &612682318890500554
-MonoBehaviour:
+  _collider: {fileID: 2920679272552374031}
+  _parent: {fileID: 2373803712623939273}
+--- !u!54 &5360708326319233286
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4936750740863209033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb978029eca33ca4787454c871c335be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slapHitbox: {fileID: 2920679272552374031}
-  slapForce: 100
-  slapData: {fileID: 1981096385362705583}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &4948122169982268793
 GameObject:
   m_ObjectHideFlags: 0

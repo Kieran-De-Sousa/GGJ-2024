@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour
     public int min_players = 1;
     public RectTransform arrow;
     public List<Vector2> arrow_positions;
+    private bool starting = false;
 
     private void Awake()
     {
@@ -141,10 +142,11 @@ public class Menu : MonoBehaviour
     {
         if (!StartCheck())
             return;
-        
+
+        starting = true;
         for(int i = 0; i < 4; i ++)
         {
-            if (players[i] != null)
+            if (players[i] != null && !starting)
             {
                 GameData.devices[i] = players[i].devices[0];
             }
