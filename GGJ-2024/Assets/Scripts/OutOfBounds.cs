@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class OutOfBounds : MonoBehaviour
 {
     private Ragdoll ragdollScript = null;
-    [SerializeField] PlayerGenerator playerGeneratorScript = null;
+    private PlayerGenerator playerGeneratorScript = null;
     Transform[] allTransforms;
     List<Transform> allChildTransforms;
     private PlayerInput input = null;

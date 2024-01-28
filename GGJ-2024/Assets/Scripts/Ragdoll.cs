@@ -19,8 +19,6 @@ public class Ragdoll : MonoBehaviour
 
     public GameObject cartoonEffect;
 
-    private bool isRagdolling = false;
-
     void Awake()
     {
         childColliders = new List<Collider>();
