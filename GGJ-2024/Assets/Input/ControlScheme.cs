@@ -51,7 +51,7 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
                     ""id"": ""113aaff8-d9d4-43d3-a858-26fb3596ac35"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -255,6 +255,33 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b4f95efc-935c-4768-ac83-2baf5801cf4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""afbce780-d2ca-446f-b32f-f80d4d506468"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeButton"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""815dc04f-4fd0-4354-a6ab-bd902fd2a002"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,6 +304,188 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e987f71f-3ac5-4c62-b542-aaa602670738"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c896cfcf-af3e-4cc4-9dc9-9d2e4ded8d95"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""672da414-98e6-4dbc-95bc-8e999aff17ef"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcb3cbaa-8052-469f-982f-0521dd112fd0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""7786f336-0235-4a9f-94bb-f1bccb72f7d2"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""956e2613-6b06-4705-af54-131f4fac86b3"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""85e1b247-4d85-4a4f-b9dc-6f6ec7b43630"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""35cdbae3-0d6e-4f4c-890f-76f18f7dea26"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8ac05dcc-3ffb-4581-a0db-b3bfef7d5509"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5ab99b81-a30a-4482-8613-fff5a6543543"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d1fb1065-f2f7-4e55-95bd-74d297464755"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""63db6214-03dd-456e-a6e4-863bf13c6739"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""da167560-9190-425c-9a86-a6b0631249ba"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Ragdoll"",
+            ""id"": ""ec4d281e-021c-4de0-99d9-2a887e460a86"",
+            ""actions"": [
+                {
+                    ""name"": ""Spawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""78a2d3ee-6731-45aa-885c-d911d9fda71e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""89b713ef-6783-49ab-bd5f-0a3f0c11ed99"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8333c90-4b5b-4333-ab12-6d6167d50603"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -317,6 +526,12 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Start = m_UI.FindAction("Start", throwIfNotFound: true);
+        m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
+        m_UI_Return = m_UI.FindAction("Return", throwIfNotFound: true);
+        m_UI_ChangeButton = m_UI.FindAction("ChangeButton", throwIfNotFound: true);
+        // Ragdoll
+        m_Ragdoll = asset.FindActionMap("Ragdoll", throwIfNotFound: true);
+        m_Ragdoll_Spawn = m_Ragdoll.FindAction("Spawn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -449,11 +664,17 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Start;
+    private readonly InputAction m_UI_Select;
+    private readonly InputAction m_UI_Return;
+    private readonly InputAction m_UI_ChangeButton;
     public struct UIActions
     {
         private @ControlScheme m_Wrapper;
         public UIActions(@ControlScheme wrapper) { m_Wrapper = wrapper; }
         public InputAction @Start => m_Wrapper.m_UI_Start;
+        public InputAction @Select => m_Wrapper.m_UI_Select;
+        public InputAction @Return => m_Wrapper.m_UI_Return;
+        public InputAction @ChangeButton => m_Wrapper.m_UI_ChangeButton;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +687,15 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
             @Start.started += instance.OnStart;
             @Start.performed += instance.OnStart;
             @Start.canceled += instance.OnStart;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+            @Return.started += instance.OnReturn;
+            @Return.performed += instance.OnReturn;
+            @Return.canceled += instance.OnReturn;
+            @ChangeButton.started += instance.OnChangeButton;
+            @ChangeButton.performed += instance.OnChangeButton;
+            @ChangeButton.canceled += instance.OnChangeButton;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -473,6 +703,15 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
             @Start.started -= instance.OnStart;
             @Start.performed -= instance.OnStart;
             @Start.canceled -= instance.OnStart;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+            @Return.started -= instance.OnReturn;
+            @Return.performed -= instance.OnReturn;
+            @Return.canceled -= instance.OnReturn;
+            @ChangeButton.started -= instance.OnChangeButton;
+            @ChangeButton.performed -= instance.OnChangeButton;
+            @ChangeButton.canceled -= instance.OnChangeButton;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -490,6 +729,52 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Ragdoll
+    private readonly InputActionMap m_Ragdoll;
+    private List<IRagdollActions> m_RagdollActionsCallbackInterfaces = new List<IRagdollActions>();
+    private readonly InputAction m_Ragdoll_Spawn;
+    public struct RagdollActions
+    {
+        private @ControlScheme m_Wrapper;
+        public RagdollActions(@ControlScheme wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Spawn => m_Wrapper.m_Ragdoll_Spawn;
+        public InputActionMap Get() { return m_Wrapper.m_Ragdoll; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RagdollActions set) { return set.Get(); }
+        public void AddCallbacks(IRagdollActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RagdollActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RagdollActionsCallbackInterfaces.Add(instance);
+            @Spawn.started += instance.OnSpawn;
+            @Spawn.performed += instance.OnSpawn;
+            @Spawn.canceled += instance.OnSpawn;
+        }
+
+        private void UnregisterCallbacks(IRagdollActions instance)
+        {
+            @Spawn.started -= instance.OnSpawn;
+            @Spawn.performed -= instance.OnSpawn;
+            @Spawn.canceled -= instance.OnSpawn;
+        }
+
+        public void RemoveCallbacks(IRagdollActions instance)
+        {
+            if (m_Wrapper.m_RagdollActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IRagdollActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RagdollActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RagdollActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public RagdollActions @Ragdoll => new RagdollActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -518,5 +803,12 @@ public partial class @ControlScheme: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnStart(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
+        void OnChangeButton(InputAction.CallbackContext context);
+    }
+    public interface IRagdollActions
+    {
+        void OnSpawn(InputAction.CallbackContext context);
     }
 }

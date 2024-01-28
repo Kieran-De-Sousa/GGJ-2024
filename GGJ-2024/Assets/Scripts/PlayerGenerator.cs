@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerGenerator : MonoBehaviour
 {
@@ -20,6 +21,22 @@ public class PlayerGenerator : MonoBehaviour
     private void JoinAllPlayers()
     {
         for (int i = 0; i < GameData.player_count; i++)
-            manager.JoinPlayer(i, i, "", GameData.devices[i]).transform.position = spawn_points[i];
+        {
+            PlayerInput pl = manager.JoinPlayer(i, i, "", GameData.devices[i]);
+            pl.transform.position = spawn_points[i];
+            pl.GetComponent<PlayerUIScript>().AwakeUI(i);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("o"))
+        {
+            SceneManager.LoadScene("WinScreen", LoadSceneMode.Single);
+        }
+        else if (Input.GetKeyDown("p"))
+        {
+            SceneManager.LoadScene("LoseScreen", LoadSceneMode.Single);
+        }
     }
 }

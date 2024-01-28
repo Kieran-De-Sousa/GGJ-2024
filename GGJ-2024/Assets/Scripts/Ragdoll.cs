@@ -9,9 +9,14 @@ public class Ragdoll : MonoBehaviour
     [SerializeField] Rigidbody myRigidbody;
     [SerializeField] GameObject rootObject;
     [SerializeField] float respawnTime = 30f;
+
     Collider[] allColliders;
     List<Collider> childColliders;
     public bool isRagdolling = false;
+
+    public Animator playerAnimator;
+
+    private bool isRagdolling = false;
 
     void Awake()
     {
@@ -19,7 +24,7 @@ public class Ragdoll : MonoBehaviour
         allColliders = GetComponentsInChildren<Collider>();
         foreach (Collider ragdollCollider in allColliders)
         {
-            if (ragdollCollider != myCollider)
+            if (ragdollCollider != myCollider && ragdollCollider.name != "SlapHitbox")
             {
                 childColliders.Add(ragdollCollider);
             }
@@ -35,8 +40,10 @@ public class Ragdoll : MonoBehaviour
 
     public void ToggleRagdoll(bool bIsRagdoll)
     {
+        isRagdolling = bIsRagdoll;
         GetComponent<Animator>().enabled = !bIsRagdoll;
         myRigidbody.useGravity = !bIsRagdoll;
+        rootObject.GetComponent<Rigidbody>().constraints = bIsRagdoll ? RigidbodyConstraints.None : RigidbodyConstraints.FreezePositionY;
         myCollider.enabled = !bIsRagdoll;
         if (bIsRagdoll)
         {
@@ -53,6 +60,10 @@ public class Ragdoll : MonoBehaviour
         {
             ragdollCollider.enabled = bIsRagdoll;
         }
+
+        AudioPlaySettings playSettings = AudioPlaySettings.Default;
+        playSettings.Position = transform.position;
+        AudioManager.Instance.PlayEffect(AudioID.Ragdoll, AudioMixerID.SFX, playSettings);
     }
 
     public void ToggleRagdollAndCoroutine(bool bIsRagdoll)
@@ -64,7 +75,10 @@ public class Ragdoll : MonoBehaviour
     private IEnumerator GetBackUp()
     {
         yield return new WaitForSeconds(respawnTime);
+
         ToggleRagdoll(false);
+        playerAnimator.SetTrigger("GetUp");
+
         this.transform.position = rootObject.transform.position + new Vector3(0f, 0.5f, 0f);
     }
 

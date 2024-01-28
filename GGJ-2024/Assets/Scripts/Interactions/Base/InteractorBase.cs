@@ -15,4 +15,12 @@ public abstract class InteractorBase : MonoBehaviour
             interactable.Interact();
         }
     }
+
+    public virtual void Interact(TestPlayerScript player)
+    {
+        foreach (var interactable in interactables)
+        {
+            interactable.Interact(player);
+        }
+    }
 }
