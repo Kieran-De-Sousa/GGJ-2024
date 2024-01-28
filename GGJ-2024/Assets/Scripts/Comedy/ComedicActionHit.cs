@@ -14,15 +14,16 @@ public class ComedicActionHit : ComedicActionBase
     // Start is called before the first frame update
     void Start()
     {
-        // Collider[] parentColliders = transform.parent.GetComponentsInChildren<Collider>();
-        // Collider thisCollider = this.GetComponent<Collider>();
-        //
-        // _collider = thisCollider;
-        //
-        // foreach (Collider parentCollider in parentColliders)
-        // {
-        //     Physics.IgnoreCollision(thisCollider, parentCollider);
-        // }
+        /*
+        Collider[] parentColliders = transform.parent.GetComponentsInChildren<Collider>();
+        Collider thisCollider = this.GetComponent<Collider>();
+
+        _collider = thisCollider;
+
+        foreach (Collider parentCollider in parentColliders)
+        {
+            Physics.IgnoreCollision(thisCollider, parentCollider);
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)

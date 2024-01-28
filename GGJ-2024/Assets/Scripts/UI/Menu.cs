@@ -142,7 +142,6 @@ public class Menu : MonoBehaviour
     {
         if (!StartCheck())
             return;
-
         starting = true;
         for(int i = 0; i < 4; i ++)
         {
@@ -162,6 +161,6 @@ public class Menu : MonoBehaviour
     /// <returns>Bool if game can be started</returns>
     private bool StartCheck()
     {
-        return playerInputManager.playerCount >= min_players;
+        return (playerInputManager.playerCount >= min_players) && !starting;
     }
 }
