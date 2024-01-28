@@ -76,14 +76,6 @@ public class ObjectBreakingScript : MonoBehaviour
     private void Update()
     {
         _velocity = _rigidbody.velocity.magnitude;
-
-        if (explosive)
-        {
-            if (Input.GetKeyDown("1"))
-            {
-                DeleteObject();
-            }
-        }
     }
 
     private void LateUpdate()
@@ -106,6 +98,11 @@ public class ObjectBreakingScript : MonoBehaviour
         health = healthMax;
         _rigidbody.velocity = Vector3.zero;
         SetRandomlyToExplosive();
+        
+        AudioPlaySettings playSettings = AudioPlaySettings.Default;
+        playSettings.Position = transform.position;
+        AudioManager.Instance.PlayEffect(AudioID.TomatoSplat, AudioMixerID.SFX, playSettings);
+        
         _gameController.GetComponent<BreakableObjectPoolScript>().ReturnObjectToPool(gameObject);
     }
 
