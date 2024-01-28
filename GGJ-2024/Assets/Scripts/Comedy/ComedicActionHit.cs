@@ -9,6 +9,7 @@ public class ComedicActionHit : ComedicActionBase
 {
     [SerializeField] protected GameEvent ragdollEvent = null;
     public TestPlayerScript Initiator { get; set; }
+    public TestPlayerScript owner { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -47,13 +48,21 @@ public class ComedicActionHit : ComedicActionBase
 
     public override void ComedyTriggered(Collider collider)
     {
-        if (Initiator == null && collider.CompareTag("Player"))
+        if (owner != null)
         {
-            Initiator = collider.GetComponent<TestPlayerScript>();
+            comedyEvent.Raise(owner, comedyAmount);
+            ragdollEvent.Raise(owner, collider);
         }
+        else
+        {
+            if (collider.CompareTag("Player"))
+            {
+                Initiator = collider.GetComponent<TestPlayerScript>();
+            }
 
-        comedyEvent.Raise(Initiator, comedyAmount);
-        ragdollEvent.Raise(Initiator, collider);
+            comedyEvent.Raise(Initiator, comedyAmount);
+            ragdollEvent.Raise(Initiator, collider);
+        }
 
         PlayAudio();
     }

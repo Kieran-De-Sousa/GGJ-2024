@@ -145,7 +145,7 @@ public class Menu : MonoBehaviour
         starting = true;
         for(int i = 0; i < 4; i ++)
         {
-            if (players[i] != null && !starting)
+            if (players[i] != null)
             {
                 GameData.devices[i] = players[i].devices[0];
             }
