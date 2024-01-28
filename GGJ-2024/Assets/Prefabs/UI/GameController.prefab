@@ -48,9 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakableObjectPrefab: {fileID: 3140104191991706263, guid: 51afb417cc060344ba8e2017b0af3b55,
     type: 3}
-  spawnHeight: 25
-  spawnRadius: 70
-  spawnForceRange: {x: 40, y: 70}
+  spawnHeight: 60
+  spawnDistance: 25
+  spawnForceRange: {x: 20, y: 40}
 --- !u!114 &-2439441461366381568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4aa5b234992a742a190797177be9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxPrefab: {fileID: 0}
+  boxPrefab: {fileID: 3140104191991706263, guid: 51afb417cc060344ba8e2017b0af3b55,
+    type: 3}
   poolSize: 10
   pool: []

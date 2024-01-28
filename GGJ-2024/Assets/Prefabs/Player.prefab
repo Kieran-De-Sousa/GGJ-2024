@@ -1253,7 +1253,7 @@ MonoBehaviour:
   myCollider: {fileID: 2373803712623939273}
   myRigidbody: {fileID: 582064200327705307}
   rootObject: {fileID: 8321745705471127050}
-  respawnTime: 5
+  respawnTime: 2
   playerAnimator: {fileID: 4540229000190281644}
   cartoonEffect: {fileID: 4393291526820241302, guid: 348a163ddd19dd94b8e4a685dc9a4729,
     type: 3}
@@ -1407,8 +1407,6 @@ MonoBehaviour:
   move_speed: 5
   slapHitbox: {fileID: 2920679272552374031}
   slapForce: 100
-  slapData: {fileID: 0}
-  slappp: {fileID: 9139437360885777050}
   _slap: {fileID: 0}
 --- !u!114 &4035987114835424745
 MonoBehaviour:
