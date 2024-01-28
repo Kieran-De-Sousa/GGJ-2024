@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bcbf8ecf35bf041917920aeb195275, type: 3}
   m_Name: KingLaugh01Effect
   m_EditorClassIdentifier: 
-  ID: 0
-  Clip: {fileID: 0}
+  ID: 7
+  Clip: {fileID: 8300000, guid: 3b0681774feef824fa075182ecdba10b, type: 3}

@@ -34,8 +34,9 @@ public class RagdollGenerator : MonoBehaviour
     private void SpawnRagdoll(InputAction.CallbackContext context)
     {
         int drop_index = Random.Range(0,GameData.player_count);
-        if (!drop_cur_winnner && GameData.winner.PlayerId == drop_index)
-            drop_index = (drop_index + Random.Range(1, GameData.player_count)) % GameData.player_count;
+        if (GameData.player_count >= 1)
+            if (!drop_cur_winnner && GameData.winner.PlayerId == drop_index)
+                drop_index = (drop_index + Random.Range(1, GameData.player_count)) % GameData.player_count;
         SpawnRagdoll(drop_index);
     }
 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bcbf8ecf35bf041917920aeb195275, type: 3}
   m_Name: SlappedEffect
   m_EditorClassIdentifier: 
-  ID: 0
-  Clip: {fileID: 0}
+  ID: 4
+  Clip: {fileID: 8300000, guid: 031c260dc5468284084b4d2afb50a05e, type: 3}
