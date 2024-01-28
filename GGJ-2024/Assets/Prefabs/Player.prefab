@@ -1406,7 +1406,8 @@ MonoBehaviour:
   move_speed: 5
   slapHitbox: {fileID: 2920679272552374031}
   slapForce: 100
-  slapData: {fileID: 5686123125649068069}
+  slapData: {fileID: 1981096385362705583}
+  _slap: {fileID: 612682318890500554}
 --- !u!114 &4035987114835424745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,7 +1462,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782702501690864755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
   m_Name: 
@@ -3686,13 +3687,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8249444357049296793}
   - component: {fileID: 2920679272552374031}
+  - component: {fileID: 1981096385362705583}
+  - component: {fileID: 612682318890500554}
   m_Layer: 0
   m_Name: SlapHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8249444357049296793
 Transform:
   m_ObjectHideFlags: 0
@@ -3731,6 +3734,37 @@ CapsuleCollider:
   m_Height: 0.66
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1981096385362705583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936750740863209033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da260f519eea0b74fbfd48ec685ace4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comedyTriggered: 0
+  comedyAmount: 2
+  comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
+  ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
+--- !u!114 &612682318890500554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936750740863209033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb978029eca33ca4787454c871c335be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slapHitbox: {fileID: 2920679272552374031}
+  slapForce: 100
+  slapData: {fileID: 1981096385362705583}
 --- !u!1 &4948122169982268793
 GameObject:
   m_ObjectHideFlags: 0
