@@ -75,6 +75,8 @@ public class LaughBarScript : MonoBehaviour
             AudioPlaySettings playSettings = AudioPlaySettings.Default;
             playSettings.Position = transform.position;
             AudioManager.Instance.PlayEffect(AudioID.KingLaugh01, AudioMixerID.SFX, playSettings);
+
+            _filledMax = true;
         }
     }
 }
