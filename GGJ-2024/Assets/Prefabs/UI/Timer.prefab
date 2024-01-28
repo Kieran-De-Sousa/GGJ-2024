@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9081562c77bc774ea3ec2ecca3b3191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeMinutes: 5
+  timeMinutes: 2
   timeSeconds: 0
   timer: 0
+  eventTimer: 5
+  eventTimerRange: {x: 1, y: 10}

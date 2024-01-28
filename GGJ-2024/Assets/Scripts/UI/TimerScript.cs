@@ -12,7 +12,7 @@ public class TimerScript : MonoBehaviour
     [SerializeField] private int timeSeconds = 0;
     [SerializeField] private int timer;
     [SerializeField] private int eventTimer = 5;
-    [SerializeField] private Vector2 eventTimerRange = new Vector2(1, 15);
+    [SerializeField] private Vector2 eventTimerRange = new Vector2(1, 10);
     
     
     private float _timerCounter = 1;
