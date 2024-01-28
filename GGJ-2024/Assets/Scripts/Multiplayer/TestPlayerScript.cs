@@ -25,7 +25,6 @@ public class TestPlayerScript : MonoBehaviour
     private Ragdoll ragdollScript;
     private Collider grabbableCollider = null;
     private bool holdingObject = false;
-    private float rotationAngle = 0;
 
     private void Start()
     {

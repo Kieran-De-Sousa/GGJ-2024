@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OutOfBounds : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class OutOfBounds : MonoBehaviour
     [SerializeField] PlayerGenerator playerGeneratorScript = null;
     Transform[] allTransforms;
     List<Transform> allChildTransforms;
+    private PlayerInput input = null;
 
     private void Awake()
     {
+        playerGeneratorScript = GameObject.Find("PlayerInputManager").GetComponent<PlayerGenerator>();
         ragdollScript = GetComponent<Ragdoll>();
+        input = GetComponent<PlayerInput>();
         allTransforms = GetComponentsInChildren<Transform>();
         allChildTransforms = new List<Transform>();
         foreach (Transform t in allTransforms) 
@@ -48,7 +52,7 @@ public class OutOfBounds : MonoBehaviour
     private void RespawnPlayer()
     {
         ragdollScript.ToggleRagdoll(false);
-        transform.position = new Vector3(0f, 2.0f, 0);
+        transform.position = playerGeneratorScript.spawn_points[input.playerIndex];
         Debug.Log("respawn");
     }
 }
