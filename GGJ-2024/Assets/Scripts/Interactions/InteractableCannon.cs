@@ -31,7 +31,7 @@ public class InteractableCannon : Interactable
         // TODO: Add cooldown timer
         GameObject cannonBall = Instantiate(ammo, barrel.position, barrel.rotation);
         cannonBall.GetComponent<Rigidbody>().velocity = barrel.forward * force * Time.deltaTime;
-        cannonBall.GetComponent<ComedicActionHit>().Initiator = initiator;
+        cannonBall.GetComponent<ComedicActionHit>().owner = initiator;
         AudioPlaySettings playSettings = AudioPlaySettings.Default;
         playSettings.Position = transform.position;
         AudioManager.Instance.PlayEffect(AudioID.CannonFire, AudioMixerID.SFX, playSettings);

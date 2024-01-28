@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33bcbf8ecf35bf041917920aeb195275, type: 3}
-  m_Name: AudienceLaugher02Effect
+  m_Name: AudienceLaughter02Effect
   m_EditorClassIdentifier: 
-  ID: 0
-  Clip: {fileID: 0}
+  ID: 9
+  Clip: {fileID: 8300000, guid: 7d5b8f56276290c48a7c15963fe941c9, type: 3}

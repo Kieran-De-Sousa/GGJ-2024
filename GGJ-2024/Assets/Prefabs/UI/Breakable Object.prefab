@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5412713402926749823}
   - component: {fileID: 4800865942397688131}
   - component: {fileID: 2226621748777932811}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Breakable Object
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -128,6 +128,9 @@ MonoBehaviour:
   maxVelocityToDamage: 100
   maxDamagetaken: 150
   lifeSpanInSeconds: 30
+  explosive: 0
+  explosionForce: 50
+  explosionRange: 10
 --- !u!54 &-5412713402926749823
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comedyTriggered: 0
-  comedyAmount: 0.1
+  comedyAmount: 3
   comedyEvent: {fileID: 11400000, guid: caf5967295dddc94e954be63dd09115c, type: 2}
   ragdollEvent: {fileID: 11400000, guid: dc688460d08e6184882470787eb170ae, type: 2}
 --- !u!65 &2226621748777932811
@@ -203,7 +206,7 @@ GameObject:
   - component: {fileID: 7551904734797429562}
   - component: {fileID: 4235012540218172967}
   - component: {fileID: 1857369388221424311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

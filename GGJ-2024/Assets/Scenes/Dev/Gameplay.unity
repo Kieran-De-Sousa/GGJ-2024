@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 72845385}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 60, z: 0}
+  m_LocalPosition: {x: 0, y: 40, z: 0}
   m_LocalScale: {x: 40, y: 40, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1383,6 +1383,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1774033026262377914, guid: 60a85ba527d26b74b96beaf98c187017,
+        type: 3}
+      propertyPath: spawnHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774033026262377914, guid: 60a85ba527d26b74b96beaf98c187017,
+        type: 3}
+      propertyPath: spawnDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1911233697701054382, guid: 60a85ba527d26b74b96beaf98c187017,
         type: 3}
       propertyPath: m_Name
@@ -2348,7 +2358,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &936734406
 RectTransform:
@@ -3365,7 +3375,7 @@ PrefabInstance:
     - target: {fileID: 1143018495561425122, guid: 40087f1fbe48b2045801c3f4f47963bc,
         type: 3}
       propertyPath: m_text
-      value: '02 : 00'
+      value: 01:30
       objectReference: {fileID: 0}
     - target: {fileID: 1143018495561425122, guid: 40087f1fbe48b2045801c3f4f47963bc,
         type: 3}
@@ -3491,7 +3501,12 @@ PrefabInstance:
     - target: {fileID: 6164632258498836847, guid: 40087f1fbe48b2045801c3f4f47963bc,
         type: 3}
       propertyPath: timeMinutes
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164632258498836847, guid: 40087f1fbe48b2045801c3f4f47963bc,
+        type: 3}
+      propertyPath: timeSeconds
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4376,7 +4391,7 @@ GameObject:
   - component: {fileID: 1850624081}
   - component: {fileID: 1850624083}
   - component: {fileID: 1850624082}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4411,7 +4426,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

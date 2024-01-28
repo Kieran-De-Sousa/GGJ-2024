@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ScoreInfo // class because i cba to think about c#'s nullable stuff rn. just dont edit it :)
 {
@@ -29,7 +30,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         if (sender is TestPlayerScript && data is float)
         {
-            AddScore((sender as TestPlayerScript).PlayerIndex, (float)data);
+            AddScore((sender as TestPlayerScript).GetComponent<PlayerInput>().playerIndex, (float)data);
         }
         else
         {

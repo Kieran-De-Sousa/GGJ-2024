@@ -18,6 +18,7 @@ public class PlayerUIScript : MonoBehaviour
         trail_renderer.endColor = DesaturateColour(playerColor[index],0.2f);
         _indicator = Instantiate(indicatorPrefab, transform.position, Quaternion.identity);
         _indicator.GetComponent<PlayerIndicatorScript>().SetOwner(transform.gameObject);
+        _indicator.transform.SetAsFirstSibling();
     }
 
     private Color DesaturateColour(Color inp, float sat_perc)
