@@ -14,6 +14,9 @@ public class TestPlayerScript : MonoBehaviour
     public Collider slapHitbox;
     public float slapForce = 100;
     public ComedicActionHit slapData;
+    private bool slapped = false;
+
+    [SerializeField] private Slap _slap;
 
     private Vector2 move_vec;
     private Rigidbody rb;
@@ -55,7 +58,36 @@ public class TestPlayerScript : MonoBehaviour
 
     public void Slap(InputAction.CallbackContext info)
     {
-        GetComponent<Animator>().SetTrigger("Slap");
+        // TODO: Please fix this I have spent 6 hours trying to let us slap someone
+        // TODO: and the stupid box collider attached to this parent hits the idiots collider
+        // TODO: instead of our magical capsule collider............ I am mad - Kieran.
+        //_slap.SlapEngaged();
+
+        if (slapped) return;
+
+        if (!GetComponent<Animator>().GetBool("Slap"))
+        {
+            GetComponent<Animator>().SetTrigger("Slap");
+
+            slapHitbox.gameObject.SetActive(true);
+            slapHitbox.enabled = true;
+
+            Debug.Log($"Slapped = {slapHitbox.gameObject.activeSelf}");
+
+            StopAllCoroutines();
+            StartCoroutine(SlapHitboxTime());
+        }
+    }
+
+    IEnumerator SlapHitboxTime()
+    {
+        slapped = true;
+        yield return new WaitForSeconds(1.0f);
+
+        slapped = false;
+        slapHitbox.gameObject.SetActive(false);
+        slapHitbox.enabled = false;
+        Debug.Log($"Slapped = {slapHitbox.gameObject.activeSelf}");
     }
 
     public void Update()

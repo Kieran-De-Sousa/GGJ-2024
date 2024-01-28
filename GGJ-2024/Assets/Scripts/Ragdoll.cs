@@ -22,7 +22,7 @@ public class Ragdoll : MonoBehaviour
         allColliders = GetComponentsInChildren<Collider>();
         foreach (Collider ragdollCollider in allColliders)
         {
-            if (ragdollCollider != myCollider)
+            if (ragdollCollider != myCollider && ragdollCollider.name != "SlapHitbox")
             {
                 childColliders.Add(ragdollCollider);
             }
