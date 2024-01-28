@@ -20,5 +20,14 @@ public class GenerateWinner : MonoBehaviour
     {
         PlayerInput pl = manager.JoinPlayer(0, 0, "", GameData.devices[GameData.winner.PlayerId]);
         pl.GetComponent<PlayerUIScript>().AwakeUI(GameData.winner.PlayerId);
+
+        PlayAudio();
+    }
+
+    private void PlayAudio()
+    {
+        AudioPlaySettings playSettings = AudioPlaySettings.Default;
+        playSettings.Position = transform.position;
+        AudioManager.Instance.PlayEffect(AudioID.YouWin, AudioMixerID.SFX, playSettings);
     }
 }

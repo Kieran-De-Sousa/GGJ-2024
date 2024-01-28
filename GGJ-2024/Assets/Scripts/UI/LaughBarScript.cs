@@ -12,6 +12,8 @@ public class LaughBarScript : MonoBehaviour
     public float fillAmount;
     public float fillMax = 100;
 
+    private bool _filledMax = false;
+
     private void Awake()
     {
         _barFill = transform.GetChild(1).transform.GetComponent<Image>();
@@ -38,6 +40,8 @@ public class LaughBarScript : MonoBehaviour
         {
             fillAmount += value;
             FillCheck();
+
+            // TODO: ADD AUDIENCE LAUGHTER
         }
     }
 
@@ -64,6 +68,13 @@ public class LaughBarScript : MonoBehaviour
         {
             _currentFillAmount = Mathf.Lerp(_currentFillAmount, fillAmount, 0.1f);
             _barFill.fillAmount = _currentFillAmount / fillMax;
+        }
+
+        if (fillAmount == fillMax && _filledMax == false)
+        {
+            AudioPlaySettings playSettings = AudioPlaySettings.Default;
+            playSettings.Position = transform.position;
+            AudioManager.Instance.PlayEffect(AudioID.KingLaugh01, AudioMixerID.SFX, playSettings);
         }
     }
 }
