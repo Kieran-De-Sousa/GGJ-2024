@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ragdoll : MonoBehaviour
 {
-    [SerializeField] Collider myCollider;
+    public Collider myCollider;
     [SerializeField] Rigidbody myRigidbody;
+    [SerializeField] Collider grabCollider;
     [SerializeField] GameObject rootObject;
     [SerializeField] float respawnTime = 30f;
 
     Collider[] allColliders;
     List<Collider> childColliders;
+    public bool isRagdolling = false;
 
     public Animator playerAnimator;
 
     public GameObject cartoonEffect;
-
-    private bool isRagdolling = false;
 
     void Awake()
     {
@@ -24,7 +25,7 @@ public class Ragdoll : MonoBehaviour
         allColliders = GetComponentsInChildren<Collider>();
         foreach (Collider ragdollCollider in allColliders)
         {
-            if (ragdollCollider != myCollider && ragdollCollider.name != "SlapHitbox")
+            if (ragdollCollider != myCollider && ragdollCollider.name != "SlapHitbox" && ragdollCollider != grabCollider)
             {
                 childColliders.Add(ragdollCollider);
             }
@@ -47,6 +48,18 @@ public class Ragdoll : MonoBehaviour
         myRigidbody.useGravity = !bIsRagdoll;
         rootObject.GetComponent<Rigidbody>().constraints = bIsRagdoll ? RigidbodyConstraints.None : RigidbodyConstraints.FreezePositionY;
         myCollider.enabled = !bIsRagdoll;
+        grabCollider.enabled = !bIsRagdoll;
+
+        if (bIsRagdoll)
+        {
+            myRigidbody.constraints = RigidbodyConstraints.FreezePositionY;
+            isRagdolling = true;
+        }
+        else
+        {
+            myRigidbody.constraints = RigidbodyConstraints.None;
+            isRagdolling = false;
+        }
 
         foreach (Collider ragdollCollider in childColliders)
         {
@@ -71,7 +84,7 @@ public class Ragdoll : MonoBehaviour
         ToggleRagdoll(false);
         playerAnimator.SetTrigger("GetUp");
 
-        this.transform.position = rootObject.transform.position + new Vector3(0f, 0.5f, 0f);
+        this.transform.position = rootObject.transform.position - new Vector3(0f, 1.2f, 0f);
     }
 
     void RandomAnimation()
