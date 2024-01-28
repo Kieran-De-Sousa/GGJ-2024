@@ -161,6 +161,6 @@ public class Menu : MonoBehaviour
     /// <returns>Bool if game can be started</returns>
     private bool StartCheck()
     {
-        return (playerInputManager.playerCount >= min_players) && !starting;
+        return (playerInputManager.playerCount >= min_players) && !starting && in_join_mode;
     }
 }
