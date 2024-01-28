@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ObjectBreakingScript : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class ObjectBreakingScript : MonoBehaviour
     private float lifeSpanInSecondsMax;
 
     private GameObject _gameController;
+
+    [SerializeField] private bool explosive;
+    [SerializeField] private float explosionForce = 50;
+    [SerializeField] private float explosionRange = 10;
     
     private void Awake()
     {
@@ -29,6 +34,8 @@ public class ObjectBreakingScript : MonoBehaviour
         
         lifeSpanInSecondsMax = lifeSpanInSeconds;
         healthMax = health;
+        
+        SetRandomlyToExplosive();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,6 +76,14 @@ public class ObjectBreakingScript : MonoBehaviour
     private void Update()
     {
         _velocity = _rigidbody.velocity.magnitude;
+
+        if (explosive)
+        {
+            if (Input.GetKeyDown("1"))
+            {
+                DeleteObject();
+            }
+        }
     }
 
     private void LateUpdate()
@@ -80,11 +95,66 @@ public class ObjectBreakingScript : MonoBehaviour
         }
     }
 
-    private void DeleteObject()
+    public void DeleteObject()
     {
+        if (explosive)
+        {
+            Explode();
+        }
+        
         lifeSpanInSeconds = lifeSpanInSecondsMax;
         health = healthMax;
         _rigidbody.velocity = Vector3.zero;
+        SetRandomlyToExplosive();
         _gameController.GetComponent<BreakableObjectPoolScript>().ReturnObjectToPool(gameObject);
+    }
+
+    private void SetRandomlyToExplosive()
+    {
+        int randomInt = Random.Range(0, 4);
+
+        if (randomInt == 3)
+        {
+            explosive = true;
+        }
+        else
+        {
+            explosive = false;
+        }
+    }
+
+    private void Explode()
+    {
+        List<GameObject> objects = new List<GameObject>();
+        
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            objects.Add(players[i]);
+        }
+
+        List<GameObject> objectsInPool = _gameController.GetComponent<BreakableObjectPoolScript>().pool;
+        for (int i = 0; i < objectsInPool.Count; i++)
+        {
+            if (objectsInPool[i].activeInHierarchy)
+            {
+                objects.Add(objectsInPool[i]);
+            }
+        }
+
+        for (int i = 0; i < objects.Count; i++)
+        {
+            float distance = Vector3.Distance(transform.position, objects[i].transform.position);
+            if (distance <= explosionRange)
+            {
+                Vector3 direction = objects[i].transform.position - transform.position;
+                direction.Normalize();
+
+                float force = explosionForce * (1 - distance / explosionRange);
+                
+                objects[i].GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
+            }
+        }
     }
 }

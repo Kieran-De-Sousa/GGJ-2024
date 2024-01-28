@@ -8,7 +8,7 @@ public class BreakableObjectPoolScript : MonoBehaviour
     [SerializeField] private GameObject boxPrefab;
     [SerializeField] private int poolSize = 10;
 
-    private List<GameObject> _pool = new List<GameObject>();
+    public List<GameObject> pool = new List<GameObject>();
 
     private void Awake()
     {
@@ -20,11 +20,11 @@ public class BreakableObjectPoolScript : MonoBehaviour
         GameObject[] boxesInScene = GameObject.FindGameObjectsWithTag("Box");
         for (int i = 0; i < boxesInScene.Length; i++)
         {
-            _pool.Add(boxesInScene[i]);
+            pool.Add(boxesInScene[i]);
             boxesInScene[i].transform.SetParent(transform);
         }
         
-        if (_pool.Count >= poolSize)
+        if (pool.Count >= poolSize)
         {
             return;
         }
@@ -33,24 +33,24 @@ public class BreakableObjectPoolScript : MonoBehaviour
         {
             GameObject newObject = Instantiate(boxPrefab, transform);
             newObject.SetActive(false);
-            _pool.Add(newObject);
+            pool.Add(newObject);
         }
     }
 
     public GameObject GetObjectFromPool()
     {
-        for (int i = 0; i < _pool.Count; i++)
+        for (int i = 0; i < pool.Count; i++)
         {
-            if (!_pool[i].activeInHierarchy)
+            if (!pool[i].activeInHierarchy)
             {
-                _pool[i].SetActive(true);
-                return _pool[i];
+                pool[i].SetActive(true);
+                return pool[i];
             }
         }
 
         GameObject newObject = Instantiate(boxPrefab, transform);
-        _pool.Add(newObject);
-        poolSize = _pool.Count;
+        pool.Add(newObject);
+        poolSize = pool.Count;
         return newObject;
     }
 
