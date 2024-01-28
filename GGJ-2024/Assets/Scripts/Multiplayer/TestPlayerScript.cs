@@ -25,6 +25,7 @@ public class TestPlayerScript : MonoBehaviour
     private Collider grabbableCollider = null;
     private Collider currentGrabbable = null;
     private bool holdingObject = false;
+    [SerializeField] private float throwSpeed = 100f;
 
     private void Start()
     {
@@ -119,7 +120,7 @@ public class TestPlayerScript : MonoBehaviour
         if (holdingObject) 
         {
             LostGrabbable();
-            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0f, 0f, 100f);
+            currentGrabbable.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * throwSpeed;
         }
     }
 
